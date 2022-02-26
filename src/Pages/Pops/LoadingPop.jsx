@@ -33,7 +33,7 @@ export default function Example(props) {
 						className="hidden sm:inline-block sm:align-middle sm:h-screen"
 						aria-hidden="true"
 					>
-						&#8203;
+						&#8203; This is a new login proccess
 					</span>
 					<Transition.Child
 						as={Fragment}
