@@ -1,0 +1,29 @@
+.howuse {
+    font-size: 18px;
+    text-align: center;
+
+}
+
+.howuse2 {
+    text-align: center;
+}
+
+.part {
+    color: white;
+}
+
+.steps {
+    margin-top: -30px;
+    margin-bottom: -20px;
+}
+
+.space {
+    background-color: #19212c;
+    color: #19212c;
+}
+
+.space1 {
+    margin-top: 2px;
+    background-color: #19212c;
+    color: #19212c;
+}

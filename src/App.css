@@ -1,0 +1,12 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.coverImage {
+    z-index: -5;
+    background-color: red;
+}
+
+.mainNavbar {
+    z-index: 4;
+}
