@@ -1,7 +1,11 @@
-import {Fragment, useState} from "react";
+import {Fragment, useState, useEffect} from "react";
 import {Dialog, Disclosure, Menu, Transition} from "@headlessui/react";
 import {XIcon} from "@heroicons/react/outline";
 import Navbar from "../../../Components/Navbar";
+import {doc, getDocs, where, query} from "firebase/firestore";
+import {HealthCases} from "../../../firebase/config";
+import Footer from "../../../Components/Footer";
+import Filter from "../../../Components/Filter";
 import Cards from "./Cards";
 import {
 	ChevronDownIcon,
@@ -11,69 +15,126 @@ import {
 	ViewGridIcon,
 } from "@heroicons/react/solid";
 
-const filters = [
-	{
-		id: "Age",
-		name: "Age",
-		options: [
-			{value: "<18", label: "<18", checked: false},
-			{value: "18-24", label: "18-24", checked: false},
-			{value: "24-35", label: "24-35", checked: true},
-			{value: "35-50", label: "35-50", checked: false},
-			{value: "50-55", label: "50-55", checked: false},
-			{value: ">55", label: ">55", checked: false},
-		],
-	},
-	{
-		id: "Skills",
-		name: "Skills",
-		options: [
-			{value: "Blacksmithing", label: "Blacksmithing", checked: false},
-			{value: "sales", label: "sales", checked: false},
-			{value: "Tailoring", label: "Tailoring", checked: true},
-			{value: "Wall-Painting", label: "Wall-Painting", checked: false},
-		],
-	},
-	{
-		id: "Certificates",
-		name: "Certificates",
-		options: [
-			{value: "Elementary", label: "Elementary", checked: false},
-			{value: "Secondary", label: "Secondary", checked: false},
-			{
-				value: "Technical Studies",
-				label: "Technical Studies",
-				checked: false,
-			},
-			{value: "Bachelors", label: "Bachelors", checked: false},
-			{value: "Others", label: "Others", checked: false},
-		],
-	},
-	{
-		id: "Country",
-		name: "Country",
-		options: [
-			{value: "AD", label: "Andorra", checked: true},
-			{value: "AE", label: "United Arab Emirates", checked: true},
-			{value: "AF", label: "Afghanistan", checked: false},
-			{value: "AG", label: "Antigua and Barbuda", checked: false},
-		],
-	},
-];
+const severityFilters = {
+	id: "severity",
+	name: "Severity",
+	options: [
+		{value: "high", label: "High", checked: false},
+		{value: "moderate", label: "Moderate", checked: false},
+		{value: "low", label: "Low", checked: false},
+		{value: "all", label: "All", checked: false},
+	],
+};
+const moneyFilters = {
+	id: "money",
+	name: "Money Need",
+	options: [
+		{value: "money1", label: "<$1000", checked: true, min: 0, max: 999},
+		{
+			value: "money2",
+			label: "$1000-$5000",
+			checked: true,
+			min: 1000,
+			max: 4999,
+		},
+		{
+			value: "money3",
+			label: "$5000-$10000",
+			checked: false,
+			min: 5000,
+			max: 9999,
+		},
+		{
+			value: "money4",
+			label: ">$10000",
+			checked: false,
+			min: 10000,
+			max: 9999999,
+		},
+		{
+			value: "money5",
+			label: "All",
+			checked: false,
+			min: 0,
+			max: 9999999,
+		},
+	],
+};
 
-const MatcherPage = () => {
+const MatcherPage = (props) => {
+	const {user, userId} = props;
+	const currentURL = window.location.href;
+	const urlCheck = currentURL.includes("Human-Care/Health");
+
+	const healthQuery = query(
+		HealthCases,
+		where("isAllowed", "==", urlCheck ? true : false)
+	);
+	const [loading, setLoading] = useState(true);
+	// Health Posts Start
+	const [healthData, setHealthData] = useState([]);
+	const getHealthData = async () => {
+		setLoading(true);
+		const healthPendingData = await getDocs(healthQuery);
+		setHealthData(
+			healthPendingData.docs.map((item) => {
+				const docData = item.data();
+				return {
+					id: item.id,
+					...docData,
+				};
+			})
+		);
+		setLoading(false);
+	};
+	const [filter, setFilter] = useState({
+		country: "",
+		severity: "",
+	});
+
+	const handleSubmit = () => {
+		const {severity, country} = filter;
+
+		if (!country) {
+			const q = query(HealthCases, where("severity", "==", severity));
+			getDocs(q).then((res) => {
+				setHealthData(res.docs.map((item) => item.data()));
+			});
+		} else if (severity === "") {
+			const q = query(HealthCases, where("country", "==", country));
+			getDocs(q).then((res) => {
+				setHealthData(res.docs.map((item) => item.data()));
+			});
+		} else {
+			const q = query(
+				HealthCases,
+				where("country", "==", country),
+				where("severity", "==", severity)
+			);
+			getDocs(q).then((res) => {
+				setHealthData(res.docs.map((item) => item.data()));
+			});
+		}
+	};
+	useEffect(() => {
+		if (filter.severity !== "" || filter.country !== "") {
+			handleSubmit();
+		} else {
+			getHealthData();
+		}
+	}, [filter]);
+	//
+	// End of Filter Data Collection
+
 	const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false);
-
 	return (
-		<div className="bg-slate-900">
-			<Navbar />
-			<div className="text-rose-400">HEALTH ASSISTANCE</div>
+		<div className="bg-[#3a3534]">
 			<div>
 				{/* Mobile filter dialog */}
 				<Transition.Root show={mobileFiltersOpen} as={Fragment}>
 					<Dialog
 						as="div"
-						className="fixed inset-0 flex z-40 lg:hidden"
+						className="fixed inset-0 flex z-50 lg:hidden"
 						onClose={setMobileFiltersOpen}
 					>
 						<Transition.Child
@@ -85,7 +146,7 @@ const MatcherPage = () => {
 							leaveFrom="opacity-100"
 							leaveTo="opacity-0"
 						>
-							<Dialog.Overlay className="fixed inset-0 bg-black bg-opacity-25" />
+							<Dialog.Overlay className="fixed inset-0 bg-black bg-opacity-75" />
 						</Transition.Child>
 
 						<Transition.Child
@@ -97,9 +158,9 @@ const MatcherPage = () => {
 							leaveFrom="translate-x-0"
 							leaveTo="translate-x-full"
 						>
-							<div className="ml-auto relative max-w-xs w-full h-full bg-white shadow-xl py-4 pb-12 flex flex-col overflow-y-auto">
-								<div className="px-4 flex items-center justify-between">
-									<h2 className="text-lg font-medium text-gray-900">Filters</h2>
+							<div className="ml-auto relative max-w-xs w-fullbg-white shadow-xl py-4 pb-12 flex flex-col overflow-y-auto">
+								<div className="px- flex items-center justify-between">
+									<h2 className="text-lg font-medium text-gray-100">Filters</h2>
 									<button
 										type="button"
 										className="-mr-2 w-10 h-10 bg-white p-2 rounded-md flex items-center justify-center text-gray-400"
@@ -113,76 +174,30 @@ const MatcherPage = () => {
 								{/* Filters */}
 								<form className="mt-4 border-t border-gray-200">
 									<h3 className="sr-only">Categories</h3>
-
-									{filters.map((section, index) => (
-										<Disclosure
-											as="div"
-											key={index}
-											className="border-t border-gray-200 px-4 py-6"
+									<Filter filter={filter} setFilter={setFilter} />
+									<div className="mt-2">
+										<button
+											type="button"
+											className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm  text-[#292524] font-bold bg-[#f2b400] hover:bg-[#d8a823] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#f2b400]"
+											onClick={() => {
+												getHealthData();
+												setFilter({
+													severity: "",
+													country: "",
+												});
+											}}
 										>
-											{({open}) => (
-												<>
-													<h3 className="-mx-2 -my-3 flow-root">
-														<Disclosure.Button className="px-2 py-3 bg-white w-full flex items-center justify-between text-gray-400 hover:text-gray-500">
-															<span className="font-medium text-gray-900">
-																{section.name}
-															</span>
-															<span className="ml-6 flex items-center">
-																{open ? (
-																	<MinusSmIcon
-																		className="h-5 w-5"
-																		aria-hidden="true"
-																	/>
-																) : (
-																	<PlusSmIcon
-																		className="h-5 w-5"
-																		aria-hidden="true"
-																	/>
-																)}
-															</span>
-														</Disclosure.Button>
-													</h3>
-													<Disclosure.Panel className="pt-6">
-														<div className="space-y-6 ">
-															{section.options.map((option, optionIdx) => (
-																<div
-																	key={option.value}
-																	className="flex items-center "
-																>
-																	<input
-																		id={`filter-mobile-${section.id}-${optionIdx}`}
-																		name={`${section.id}[]`}
-																		defaultValue={option.value}
-																		type="checkbox"
-																		defaultChecked={option.checked}
-																		className="h-4 w-4 border-gray-300 rounded text-indigo-600 focus:ring-indigo-500 "
-																	/>
-																	<label
-																		htmlFor={`filter-mobile-${section.id}-${optionIdx}`}
-																		className="ml-3 min-w-0 flex-1 text-gray-500"
-																	>
-																		{option.label}
-																	</label>
-																</div>
-															))}
-														</div>
-													</Disclosure.Panel>
-												</>
-											)}
-										</Disclosure>
-									))}
+											Clear
+										</button>
+									</div>
 								</form>
 							</div>
 						</Transition.Child>
 					</Dialog>
 				</Transition.Root>
-
+				{/*  */}
 				<main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-					<div className="relative z-10 flex items-baseline justify-between pt-24 pb-6 border-b border-gray-200">
-						<h1 className="text-4xl font-extrabold tracking-tight text-white">
-							Cases Waiting Your Help
-						</h1>
-
+					<div className="relative z-10 flex items-baseline justify-between ">
 						<div className="flex items-center">
 							<Menu as="div" className="relative inline-block text-left">
 								<div></div>
@@ -196,13 +211,13 @@ const MatcherPage = () => {
 									leaveFrom="transform opacity-100 scale-100"
 									leaveTo="transform opacity-0 scale-95"
 								>
-									<Menu.Items className=" origin-top-right absolute right-0 mt-2 w-40 rounded-md shadow-2xl bg-white ring-1 ring-black ring-opacity-5 focus:outline-none"></Menu.Items>
+									<Menu.Items className=" origin-top-right absolute right-0 mt-2 w-40 rounded-md shadow-2xl bg-white focus:ring-2 ring-black ring-opacity-5 focus:outline-none"></Menu.Items>
 								</Transition>
 							</Menu>
 
 							<button
 								type="button"
-								className="p-2 -m-2 ml-4 sm:ml-6 text-gray-400 hover:text-gray-500 lg:hidden"
+								className="p-2 -m-2 ml-4 sm:ml-6 text-gray-100 hover:text-gray-100 lg:hidden"
 								onClick={() => setMobileFiltersOpen(true)}
 							>
 								<span className="sr-only">Filters</span>
@@ -216,75 +231,38 @@ const MatcherPage = () => {
 							Products
 						</h2>
 
-						<div className="grid grid-cols-1 lg:grid-cols-4 gap-x-12 gap-y-10">
+						<div className="grid grid-cols-1 lg:grid-cols-4 gap-x-12 gap-y-10 ">
 							{/* Filters */}
-							<form className="hidden lg:block">
-								<h3 className="sr-only">Categories</h3>
-
-								{filters.map((section, index) => (
-									<Disclosure
-										as="div"
-										key={index}
-										className="border-b border-gray-200 py-6"
-									>
-										{({open}) => (
-											<>
-												<h3 className="-my-3 flow-root">
-													<Disclosure.Button className="py-3 bg-white w-full flex items-center justify-between text-sm text-gray-400 hover:text-gray-500">
-														<span className="font-medium text-gray-900">
-															{section.name}
-														</span>
-														<span className="ml-6 flex items-center">
-															{open ? (
-																<MinusSmIcon
-																	className="h-5 w-5"
-																	aria-hidden="true"
-																/>
-															) : (
-																<PlusSmIcon
-																	className="h-5 w-5"
-																	aria-hidden="true"
-																/>
-															)}
-														</span>
-													</Disclosure.Button>
-												</h3>
-												<Disclosure.Panel className="pt-6">
-													<div className="space-y-2">
-														{section.options.map((option, optionIdx) => (
-															<div
-																key={option.value}
-																className="flex items-center"
-															>
-																<input
-																	id={`filter-${section.id}-${optionIdx}`}
-																	name={`${section.id}[]`}
-																	defaultValue={option.value}
-																	type="checkbox"
-																	defaultChecked={option.checked}
-																	className="h-4 w-4 border-gray-300 rounded text-indigo-600 focus:ring-indigo-500"
-																/>
-																<label
-																	htmlFor={`filter-${section.id}-${optionIdx}`}
-																	className="ml-3 text-sm text-gray-600"
-																>
-																	{option.label}
-																</label>
-															</div>
-														))}
-													</div>
-												</Disclosure.Panel>
-											</>
-										)}
-									</Disclosure>
-								))}
-							</form>
+							<div className="sticky top-0 lg:col-span-1 ">
+								<form className="hidden lg:block ">
+									<h3 className="sr-only">Categories</h3>
+									<Filter filter={filter} setFilter={setFilter} />
+									<div className="mt-2">
+										<button
+											type="button"
+											className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm  text-[#292524] font-bold bg-[#f2b400] hover:bg-[#d8a823] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#f2b400]"
+											onClick={() => {
+												getHealthData();
+												setFilter({
+													severity: "",
+													country: "",
+												});
+											}}
+										>
+											Clear
+										</button>
+									</div>
+								</form>
+							</div>
 
 							{/* Product grid */}
 							<div className="lg:col-span-3">
-								<Cards />
-								<div className=" rounded-lg h-96 lg:h-full" />
-								{/* /End replace */}
+								<Cards
+									data={healthData}
+									loading={loading}
+									user={user}
+									userId={userId}
+								/>
 							</div>
 						</div>
 					</section>

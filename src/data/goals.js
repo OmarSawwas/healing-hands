@@ -1,27 +1,6 @@
-const goals = [
-  {
-    src: "https://tailwindui.com/img/logos/transistor-logo-gray-400.svg",
-    alt: "Workcation",
-  },
-  {
-    src: "https://tailwindui.com/img/logos/tuple-logo-gray-400.svg",
-    alt: "Tuple",
-  },
-  {
-    src: "https://tailwindui.com/img/logos/laravel-logo-gray-400.svg",
-    alt: "Laravel",
-  },
-  {
-    src: "https://tailwindui.com/img/logos/statickit-logo-gray-400.svg",
-    alt: "StaticKit",
-  },
-  {
-    src: "https://tailwindui.com/img/logos/statamic-logo-gray-400.svg",
-    alt: "Statamic",
-  },
-  {
-    src: "https://tailwindui.com/img/logos/tuple-logo-gray-400.svg",
-    alt: "Tuple",
-  },
-];
+import Goal1 from "../Images/Goal1.jpeg";
+import Goal2 from "../Images/Goal2.jpeg";
+import Goal3 from "../Images/Goal3.jpeg";
+import Goal4 from "../Images/Goal4.jpeg";
+
 export default goals;

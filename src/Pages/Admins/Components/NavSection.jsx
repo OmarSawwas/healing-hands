@@ -8,6 +8,7 @@ const NavSection = (props) => {
 		animalcareposts,
 		workassistanceposts,
 		educationassistanceposts,
+		tabId,
 	} = props;
 
 	const tabs = [
@@ -16,28 +17,28 @@ const NavSection = (props) => {
 			name: "Health-Care",
 			href: "#",
 			count: healthcareposts,
-			current: false,
+			current: tabId === "1" ? true : false,
 		},
 		{
 			id: 2,
 			name: "Animal-Care",
 			href: "#",
 			count: animalcareposts,
-			current: false,
+			current: tabId === "2" ? true : false,
 		},
 		{
 			id: 3,
 			name: "Work-Assistance",
 			href: "#",
 			count: workassistanceposts,
-			current: false,
+			current: tabId === "3" ? true : false,
 		},
 		{
 			id: 4,
 			name: "Education-Assistance",
 			href: "#",
 			count: educationassistanceposts,
-			current: true,
+			current: tabId === "4" ? true : false,
 		},
 	];
 	return (
@@ -62,13 +63,14 @@ const NavSection = (props) => {
 				<div className="border-b border-gray-200">
 					<nav className="-mb-px flex space-x-8" aria-label="Tabs">
 						{tabs.map((tab) => (
-							<a
+							<button
 								key={tab.name}
-								href="#"
+								id={tab.id}
+								onClick={props.handleClick}
 								className={classNames(
 									tab.current
-										? "border-indigo-500 text-indigo-600"
-										: "border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-200",
+										? "border-[#f2b400] text-[#f2b400]"
+										: "border-transparent text-white font-bold hover:text-[#f2b400] hover:border-[#f2b400]",
 									"whitespace-nowrap flex py-4 px-1 border-b-2 font-medium text-sm"
 								)}
 								aria-current={tab.current ? "page" : undefined}
@@ -78,7 +80,7 @@ const NavSection = (props) => {
 									<span
 										className={classNames(
 											tab.current
-												? "bg-indigo-100 text-indigo-600"
+												? "bg-indigo-100 text-[#f2b400]"
 												: "bg-gray-100 text-gray-900",
 											"hidden ml-3 py-0.5 px-2.5 rounded-full text-xs font-medium md:inline-block"
 										)}
@@ -86,7 +88,7 @@ const NavSection = (props) => {
 										{tab.count}
 									</span>
 								) : null}
-							</a>
+							</button>
 						))}
 					</nav>
 				</div>

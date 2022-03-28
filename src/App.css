@@ -10,3 +10,7 @@
 .mainNavbar {
     z-index: 4;
 }
+
+* {
+    scroll-behavior: smooth;
+}
