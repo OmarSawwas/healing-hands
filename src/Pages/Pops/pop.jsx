@@ -4,9 +4,7 @@ import {CheckIcon} from "@heroicons/react/outline";
 
 export default function Example() {
 	const [open, setOpen] = useState(true);
-
 	const cancelButtonRef = useRef(null);
-
 	return (
 		<Transition.Root show={open} as={Fragment}>
 			<Dialog

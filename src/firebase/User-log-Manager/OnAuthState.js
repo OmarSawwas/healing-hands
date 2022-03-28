@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from "react";
 import {onAuthStateChanged} from "firebase/auth";
 import {auth} from "../config";
-const userState = () => {
+const UserSate = () => {
 	const [currentUser, setCurrentUser] = useState();
 
 	useEffect(() => {
@@ -12,4 +12,4 @@ const userState = () => {
 	return currentUser;
 };
 
-export default userState;
+export default UserSate;

@@ -1,7 +1,7 @@
 import {Fragment, useState} from "react";
 import {Dialog, Transition} from "@headlessui/react";
 import {CheckIcon} from "@heroicons/react/outline";
-
+import {Navigate} from "react-router-dom";
 export default function Example(props) {
 	const [open, setOpen] = useState(true);
 	const navigate = useNavigate();

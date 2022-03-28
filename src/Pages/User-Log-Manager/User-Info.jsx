@@ -15,7 +15,7 @@ const nationalitiesMap = Nationalities.map((nationality, index) => {
 const countries = Nationalities.map((nationality, index) => {
 	return <option key={index}>{nationality.label}</option>;
 });
-const sign = (props) => {
+const UserInfo = (props) => {
 	const {error, login} = useLogin();
 	const {userData, setUserData} = props;
 	const handleChange = (event) => {
@@ -330,4 +330,4 @@ const sign = (props) => {
 	);
 };
 
-export default sign;
+export default UserInfo;

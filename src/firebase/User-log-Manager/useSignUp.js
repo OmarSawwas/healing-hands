@@ -16,7 +16,7 @@ export const useSignup = () => {
 		isAdmin: false,
 		isLoggedIn: false,
 	});
-	2;
+
 	const signup = (email, password) => {
 		setError(null);
 		createUserWithEmailAndPassword(auth, email, password)
