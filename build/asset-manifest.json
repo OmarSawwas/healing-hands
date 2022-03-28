@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/static/css/main.6691cdd8.css",
+    "main.js": "/static/js/main.eeaa1e67.js",
+    "static/media/OmarImage.jpeg": "/static/media/OmarImage.3dcf832325a9764846f1.jpeg",
+    "static/media/omar logo.png": "/static/media/omar logo.c4f7e62f24430f4e34a1.png",
+    "static/media/FayezImage.jpeg": "/static/media/FayezImage.bc51115a84942b1a2a25.jpeg",
+    "static/media/Goal17.png": "/static/media/Goal17.b11521e2e5d1ec9e9c1a.png",
+    "static/media/DoaaImage.jpeg": "/static/media/DoaaImage.489c234b94592644b5d7.jpeg",
+    "static/media/Goal8.png": "/static/media/Goal8.6e7acc1cd8c00e2088f3.png",
+    "static/media/WhatsApp Image 2022-03-07 at 6.07.51 AM.jpeg": "/static/media/WhatsApp Image 2022-03-07 at 6.07.51 AM.8a1b1e80280381d8027e.jpeg",
+    "static/media/Goal1.jpeg": "/static/media/Goal1.3803b5c2b7a63a8d2878.jpeg",
+    "static/media/Goal3.jpeg": "/static/media/Goal3.7474c9f3d0f6d18ab1a4.jpeg",
+    "static/media/Goal4.jpeg": "/static/media/Goal4.e7d5f330de4430dceff0.jpeg",
+    "index.html": "/index.html",
+    "main.6691cdd8.css.map": "/static/css/main.6691cdd8.css.map",
+    "main.eeaa1e67.js.map": "/static/js/main.eeaa1e67.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.6691cdd8.css",
+    "static/js/main.eeaa1e67.js"
+  ]
+}
