@@ -22,7 +22,6 @@ import AnimalFormDetail from "./Pages/ViewFullDetails/Animal Form View Details";
 import HealthFormDetails from "./Pages/ViewFullDetails/HealthFormDetails";
 import WorkFormDetails from "./Pages/ViewFullDetails/WorkFormDetails copy";
 import EducationFormDetail from "./Pages/ViewFullDetails/EducationFormDetails";
-import Hihi from "./Pages/hihi/hih";
 
 import Profile from "./Pages/Profile/ProfileManager";
 import StarredCases from "./Pages/Profile/Pages/StarredCases";
@@ -113,7 +112,6 @@ function App() {
 					path="/human/education-case/details/:id"
 					element={<EducationFormDetail user={myUser} userId={id} />}
 				/>
-				<Route path="hihi" element={<Hihi />} />
 
 				<Route path="/profile/:id" element={<Profile />} />
 				<Route

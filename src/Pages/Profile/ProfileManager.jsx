@@ -139,8 +139,26 @@ const Manager = () => {
 		<Sidebar>
 			<Wrapper loading={loading}>
 				<div className="border-1 border-gray-500 w-full flex items-center relative">
-					<div>
-						<div className="mt-6 flex-grow lg:mt-0 lg:ml-6 lg:flex-grow-0 lg:flex-shrink-0">
+					<div className="absolute top-0 right-0 ">
+						<button
+							onClick={handleSubmit}
+							type="button"
+							className="w-24 bg-[#f2b400] hover:bg-[#ecc242]   mx-4  inline-flex items-center px-4 py-1.5 border border-transparent text-s font-medium rounded shadow-sm text-white "
+						>
+							Submit
+						</button>
+						<button
+							onClick={handleToggleEditMode}
+							type="button"
+							className="w-24 bg-[#f2b400] hover:bg-[#ecc242]  mx-6  mx-2 inline-flex items-center px-4 py-1.5 border border-transparent text-s font-medium rounded shadow-sm text-white  "
+						>
+							<PencilIcon className="h-4 w-4" />
+							Edit
+						</button>
+					</div>
+
+					<div className="mt-6">
+						<div className=" flex-grow lg:mt-0 lg:ml-6 lg:flex-grow-0 lg:flex-shrink-0">
 							<div className="mt-1 lg:hidden">
 								<div className="flex items-center">
 									<div
@@ -198,7 +216,8 @@ const Manager = () => {
 							</div>
 						</div>
 					</div>
-					<div className="">
+
+					<div className="mt-10">
 						{!editMode ? (
 							<div className="flex ">
 								<h1 className="ml-5 text-2xl font-bold leading-7 text-gray-200 sm:leading-9 sm:truncate justify-center">
@@ -240,23 +259,6 @@ const Manager = () => {
 								</p>
 							</div>
 						)}
-					</div>
-					<div className="flex items-center justify-between absolute top-0 right-0 ">
-						<button
-							onClick={handleSubmit}
-							type="button"
-							className="w-24 bg-[#f2b400] hover:bg-[#ecc242]   mx-4 py-4 px-4 inline-flex items-center px-4 py-1.5 border border-transparent text-s font-medium rounded shadow-sm text-white "
-						>
-							Submit
-						</button>
-						<button
-							onClick={handleToggleEditMode}
-							type="button"
-							className="w-24 bg-[#f2b400] hover:bg-[#ecc242]  mx-6  mx-2 inline-flex items-center px-4 py-1.5 border border-transparent text-s font-medium rounded shadow-sm text-white  "
-						>
-							<PencilIcon className="h-4 w-4" />
-							Edit
-						</button>
 					</div>
 				</div>
 

@@ -211,6 +211,7 @@ const Navbar = (props) => {
 																	</Link>
 																)}
 															</Menu.Item>
+
 															<Menu.Item>
 																{({active}) => (
 																	<button
@@ -274,6 +275,22 @@ const Navbar = (props) => {
 										to="#"
 										className="border-transparent text-yellow-400 hover:bg-gray-50 hover:border-yellow-400 hover:text-gray-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium sm:pl-5 sm:pr-6"
 									>
+										<div className="flex justify-center">
+											{user && (
+												<img
+													className="h-40 w-40 rounded-full justify-center "
+													src={user.image}
+													alt=""
+												/>
+											)}
+										</div>
+									</Disclosure.Button>
+
+									<Disclosure.Button
+										as="a"
+										to="#"
+										className="border-transparent text-yellow-400 hover:bg-gray-50 hover:border-yellow-400 hover:text-gray-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium sm:pl-5 sm:pr-6"
+									>
 										<Link to={`/profile/${userId}`}>Your Profile</Link>
 									</Disclosure.Button>
 									<Disclosure.Button
@@ -296,13 +313,47 @@ const Navbar = (props) => {
 												<span>Pending Posts</span>
 											</button>
 										)}
+										{user && user.isAdmin && (
+											<button
+												type="button"
+												className="ml-20 p-1 rounded-full text-yellow-400 hover:text-gray-500 focus:outline-none "
+												onClick={() => {
+													navigate(`${userId}/messages`);
+												}}
+											>
+												<div className="flex">
+													<span className="font-bold mr-2">{messages}</span>
+													<ChatAlt2Icon
+														className="h-6 w-6"
+														aria-hidden="true"
+													/>
+												</div>
+											</button>
+										)}
 									</Disclosure.Button>
+
 									<Disclosure.Button
 										as="a"
 										to="#"
 										className="border-transparent text-yellow-400 hover:bg-gray-50 hover:border-yellow-400 hover:text-gray-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium sm:pl-5 sm:pr-6"
 									>
-										<button onClick={handleLogout}>Sign out</button>
+										{user ? (
+											<button onClick={handleLogout}>Sign out</button>
+										) : (
+											<button
+												type="button"
+												onClick={() => {
+													navigate("/Sign-up");
+												}}
+												className="inline-flex "
+											>
+												<PlusSmIcon
+													className="-ml-1 mr-2 h-5 w-5"
+													aria-hidden="true"
+												/>
+												<span>SignUp/In</span>
+											</button>
+										)}
 									</Disclosure.Button>
 								</div>
 							</div>

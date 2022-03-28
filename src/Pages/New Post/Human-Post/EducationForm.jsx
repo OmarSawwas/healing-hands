@@ -232,7 +232,7 @@ const EducationForm = () => {
 										id="extraAddressInfo"
 										required
 										rows={4}
-										className="max-w-xl h-35 box-content resize shadow-lg	box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1) placeholder:italic  block w-full py-3 px-4 placeholder-gray-400 focus:ring-[#292524] focus:border-[#292524] border border-[#292524] rounded-md"
+										className="w-48 h-35 box-content resize shadow-lg	box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1) placeholder:italic  block  py-3 px-4 placeholder-gray-400 focus:ring-[#292524] focus:border-[#292524] border border-[#292524] rounded-md"
 										placeholder="Please elaborate on how to get to you/the person you are helping."
 									/>
 								</div>
@@ -371,7 +371,7 @@ const EducationForm = () => {
 												id="extraInfo"
 												required
 												rows={4}
-												className="max-w-xl h-40 box-content resize shadow-lg	box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1) placeholder:italic  block w-full py-3 px-4 placeholder-gray-400 focus:ring-[#292524] focus:border-[#292524] border border-[#292524] rounded-md"
+												className="w-48 h-40 box-content resize shadow-lg	box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1) placeholder:italic  block  py-3 px-4 placeholder-gray-400 focus:ring-[#292524] focus:border-[#292524] border border-[#292524] rounded-md"
 												placeholder="Please elaborate on what type of help do you/the person you are helping need to continue your/their education."
 											/>
 										</div>
