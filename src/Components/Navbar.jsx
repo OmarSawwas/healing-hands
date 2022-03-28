@@ -110,129 +110,128 @@ const Navbar = (props) => {
 										>
 											Contact Us
 										</Link>
-									</div>
-								</div>
-								<div className="flex items-center">
-									<div className=" relative inline-flex items-center px-4 py-2 flex-shrink-0">
-										<List2 />
-										{!user && (
-											<button
-												type="button"
-												onClick={() => {
-													navigate("/Sign-up");
-												}}
-												className={classNames(
-													currentURL.includes("Sign")
-														? "inline-flex border-yellow-400 border-b-2 bg-stone-800 text-yellow-400 text-sm font-medium  shadow-sm  mx-2"
-														: "relative inline-flex items-center px-4 py-2 border border-transparent bg-stone-800 hover:text-yellow-400 text-sm font-medium rounded-md text-white shadow-sm hover:bg-stone-800 mx-2"
-												)}
-											>
-												<PlusSmIcon
-													className="-ml-1 mr-2 h-5 w-5"
-													aria-hidden="true"
-												/>
-												<span>SignUp/In</span>
-											</button>
-										)}
-
-										{user && user.isAdmin && (
-											<button
-												type="button"
-												onClick={() => {
-													navigate("/pending-posts");
-												}}
-												className={classNames(
-													currentURL.includes("pending-posts")
-														? "inline-flex border-yellow-400 border-b-2 bg-stone-800 text-yellow-400 text-sm font-medium  shadow-sm  mx-2"
-														: "relative inline-flex items-center px-4 py-2 border border-transparent bg-stone-800 hover:text-yellow-400 text-sm font-medium rounded-md text-white shadow-sm hover:bg-stone-800 mx-2"
-												)}
-											>
-												<ClockIcon
-													className="-ml-1 mr-2 h-5 w-5"
-													aria-hidden="true"
-												/>
-												<span>Pending Posts</span>
-											</button>
-										)}
-									</div>
-
-									<div className="hidden md:ml-4 md:flex-shrink-0 md:flex md:items-center">
-										{user && user.isAdmin && (
-											<button
-												type="button"
-												className=" p-1 rounded-full text-yellow-400 hover:text-gray-500 focus:outline-none "
-												onClick={() => {
-													navigate(`${userId}/messages`);
-												}}
-											>
-												<div className="flex">
-													<span className="font-bold mr-2">{messages}</span>
-													<ChatAlt2Icon
-														className="h-6 w-6"
+										<div className=" relative inline-flex items-center px-4 py-2 flex-shrink-0 ">
+											<List2 className="ml-24" />
+											{!user && (
+												<button
+													type="button"
+													onClick={() => {
+														navigate("/Sign-up");
+													}}
+													className={classNames(
+														currentURL.includes("Sign")
+															? "inline-flex border-yellow-400 border-b-2 bg-stone-800 text-yellow-400 text-sm font-medium  shadow-sm  mx-2"
+															: "relative inline-flex items-center px-4 py-2 border border-transparent bg-stone-800 hover:text-yellow-400 text-sm font-medium rounded-md text-white shadow-sm hover:bg-stone-800 mx-2"
+													)}
+												>
+													<PlusSmIcon
+														className="-ml-1 mr-2 h-5 w-5"
 														aria-hidden="true"
 													/>
-												</div>
-											</button>
-										)}
+													<span>SignUp/In</span>
+												</button>
+											)}
 
-										{/* Profile dropdown */}
-										{user && (
-											<Menu as="div" className="ml-3 relative z-50">
-												<div>
-													<Menu.Button className="bg-white rounded-full flex text-sm focus:outline-none focus:ring-2 focus:ring-yellow-400">
-														<span className="sr-only">Open user menu</span>
-														<img
-															className="h-8 w-8 rounded-full"
-															src={user.image}
-															alt=""
-														/>
-													</Menu.Button>
-												</div>
-												<Transition
-													as={Fragment}
-													enter="transition ease-out duration-200"
-													enterFrom="transform opacity-0 scale-95"
-													enterTo="transform opacity-100 scale-100"
-													leave="transition ease-in duration-75"
-													leaveFrom="transform opacity-100 scale-100"
-													leaveTo="transform opacity-0 scale-95"
+											{user && user.isAdmin && (
+												<button
+													type="button"
+													onClick={() => {
+														navigate("/pending-posts");
+													}}
+													className={classNames(
+														currentURL.includes("pending-posts")
+															? "inline-flex border-yellow-400 border-b-2 bg-stone-800 text-yellow-400 text-sm font-medium  shadow-sm  mx-2"
+															: "relative inline-flex items-center px-4 py-2 border border-transparent bg-stone-800 hover:text-yellow-400 text-sm font-medium rounded-md text-white shadow-sm hover:bg-stone-800 mx-2"
+													)}
 												>
-													<Menu.Items
-														onhover
-														className="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-stone-800 ring-1 ring-black ring-opacity-5 focus:outline-none"
+													<ClockIcon
+														className="-ml-1 mr-2 h-5 w-5"
+														aria-hidden="true"
+													/>
+													<span>Pending Posts</span>
+												</button>
+											)}
+										</div>
+
+										<div className="hidden md:ml-4 md:flex-shrink-0 md:flex md:items-center">
+											{user && user.isAdmin && (
+												<button
+													type="button"
+													className=" p-1 rounded-full text-yellow-400 hover:text-gray-500 focus:outline-none "
+													onClick={() => {
+														navigate(`${userId}/messages`);
+													}}
+												>
+													<div className="flex">
+														<span className="font-bold mr-2">{messages}</span>
+														<ChatAlt2Icon
+															className="h-6 w-6"
+															aria-hidden="true"
+														/>
+													</div>
+												</button>
+											)}
+
+											{/* Profile dropdown */}
+											{user && (
+												<Menu as="div" className="ml-3 relative z-50">
+													<div>
+														<Menu.Button className="bg-white rounded-full flex text-sm focus:outline-none focus:ring-2 focus:ring-yellow-400">
+															<span className="sr-only">Open user menu</span>
+															<img
+																className="h-8 w-8 rounded-full"
+																src={user.image}
+																alt=""
+															/>
+														</Menu.Button>
+													</div>
+													<Transition
+														as={Fragment}
+														enter="transition ease-out duration-200"
+														enterFrom="transform opacity-0 scale-95"
+														enterTo="transform opacity-100 scale-100"
+														leave="transition ease-in duration-75"
+														leaveFrom="transform opacity-100 scale-100"
+														leaveTo="transform opacity-0 scale-95"
 													>
-														<Menu.Item>
-															{({active}) => (
-																<Link
-																	to={`/profile/${userId}`}
-																	className={classNames(
-																		active ? "bg-stone-800" : "",
-																		"block px-4 py-2 text-sm text-white hover:text-yellow-400"
-																	)}
-																>
-																	Your Profile
-																</Link>
-															)}
-														</Menu.Item>
-														<Menu.Item>
-															{({active}) => (
-																<button
-																	onClick={handleLogout}
-																	className={classNames(
-																		active ? "bg-stone-800" : "",
-																		"block px-4 py-2 text-sm text-white hover:text-yellow-400"
-																	)}
-																>
-																	Sign out
-																</button>
-															)}
-														</Menu.Item>
-													</Menu.Items>
-												</Transition>
-											</Menu>
-										)}
+														<Menu.Items
+															onhover
+															className="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-stone-800 ring-1 ring-black ring-opacity-5 focus:outline-none"
+														>
+															<Menu.Item>
+																{({active}) => (
+																	<Link
+																		to={`/profile/${userId}`}
+																		className={classNames(
+																			active ? "bg-stone-800" : "",
+																			"block px-4 py-2 text-sm text-white hover:text-yellow-400"
+																		)}
+																	>
+																		Your Profile
+																	</Link>
+																)}
+															</Menu.Item>
+															<Menu.Item>
+																{({active}) => (
+																	<button
+																		onClick={handleLogout}
+																		className={classNames(
+																			active ? "bg-stone-800" : "",
+																			"block px-4 py-2 text-sm text-white hover:text-yellow-400"
+																		)}
+																	>
+																		Sign out
+																	</button>
+																)}
+															</Menu.Item>
+														</Menu.Items>
+													</Transition>
+												</Menu>
+											)}
+										</div>
 									</div>
 								</div>
+								<div className="flex items-center"></div>
 							</div>
 						</div>
 
@@ -243,28 +242,29 @@ const Navbar = (props) => {
 									to="#"
 									className="border-transparent bg-stone-800 text-yellow-400 hover:bg-gray-50 hover:border-yellow-400 hover:text-gray-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium sm:pl-5 sm:pr-6"
 								>
-									Home
+									<Link to="/">Home</Link>
+								</Disclosure.Button>
+
+								<Disclosure.Button
+									as="a"
+									to="#"
+									className="border-transparent text-yellow-400 hover:bg-gray-50 hover:border-yellow-400 hover:text-gray-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium sm:pl-5 sm:pr-6"
+								>
+									<Link to="/contact-us">Contact Us</Link>
 								</Disclosure.Button>
 								<Disclosure.Button
 									as="a"
 									to="#"
 									className="border-transparent text-yellow-400 hover:bg-gray-50 hover:border-yellow-400 hover:text-gray-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium sm:pl-5 sm:pr-6"
 								>
-									Contact us
+									<List />
 								</Disclosure.Button>
 								<Disclosure.Button
 									as="a"
 									to="#"
 									className="border-transparent text-yellow-400 hover:bg-gray-50 hover:border-yellow-400 hover:text-gray-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium sm:pl-5 sm:pr-6"
 								>
-									New-Post
-								</Disclosure.Button>
-								<Disclosure.Button
-									as="a"
-									to="#"
-									className="border-transparent text-yellow-400 hover:bg-gray-50 hover:border-yellow-400 hover:text-gray-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium sm:pl-5 sm:pr-6"
-								>
-									Healing-Hands
+									<List2 />
 								</Disclosure.Button>
 							</div>
 							<div className="pt-4 pb-3 border-t border-yellow-400">
@@ -274,14 +274,35 @@ const Navbar = (props) => {
 										to="#"
 										className="border-transparent text-yellow-400 hover:bg-gray-50 hover:border-yellow-400 hover:text-gray-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium sm:pl-5 sm:pr-6"
 									>
-										Your Profile
+										<Link to={`/profile/${userId}`}>Your Profile</Link>
 									</Disclosure.Button>
 									<Disclosure.Button
 										as="a"
 										to="#"
 										className="border-transparent text-yellow-400 hover:bg-gray-50 hover:border-yellow-400 hover:text-gray-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium sm:pl-5 sm:pr-6"
 									>
-										Sign out
+										{user && user.isAdmin && (
+											<button
+												type="button"
+												onClick={() => {
+													navigate("/pending-posts");
+												}}
+												className="inline-flex"
+											>
+												<ClockIcon
+													className="-ml-1 mr-2 h-5 w-5"
+													aria-hidden="true"
+												/>
+												<span>Pending Posts</span>
+											</button>
+										)}
+									</Disclosure.Button>
+									<Disclosure.Button
+										as="a"
+										to="#"
+										className="border-transparent text-yellow-400 hover:bg-gray-50 hover:border-yellow-400 hover:text-gray-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium sm:pl-5 sm:pr-6"
+									>
+										<button onClick={handleLogout}>Sign out</button>
 									</Disclosure.Button>
 								</div>
 							</div>
