@@ -94,25 +94,33 @@ const MatcherPage = (props) => {
 
 	const handleSubmit = () => {
 		const {severity, country} = filter;
-
-		if (!country) {
-			const q = query(HealthCases, where("severity", "==", severity));
+		if (country === "") {
+			const q = query(
+				HealthCases,
+				where("severity", "==", severity),
+				where("isAllowed", "==", urlCheck ? true : false)
+			);
 			getDocs(q).then((res) => {
-				setHealthData(res.docs.map((item) => item.data()));
+				setHealthData(res.docs.map((item) => ({id: item.id, ...item.data()})));
 			});
 		} else if (severity === "") {
-			const q = query(HealthCases, where("country", "==", country));
+			const q = query(
+				HealthCases,
+				where("country", "==", country),
+				where("isAllowed", "==", urlCheck ? true : false)
+			);
 			getDocs(q).then((res) => {
-				setHealthData(res.docs.map((item) => item.data()));
+				setHealthData(res.docs.map((item) => ({id: item.id, ...item.data()})));
 			});
 		} else {
 			const q = query(
 				HealthCases,
 				where("country", "==", country),
-				where("severity", "==", severity)
+				where("severity", "==", severity),
+				where("isAllowed", "==", urlCheck ? true : false)
 			);
 			getDocs(q).then((res) => {
-				setHealthData(res.docs.map((item) => item.data()));
+				setHealthData(res.docs.map((item) => ({id: item.id, ...item.data()})));
 			});
 		}
 	};

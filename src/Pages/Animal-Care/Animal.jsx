@@ -112,25 +112,33 @@ const Animal = (props) => {
 
 	const handleSubmit = () => {
 		const {severity, country} = filter;
-
-		if (!country) {
-			const q = query(animalFormData, where("severity", "==", severity));
+		if (country === "") {
+			const q = query(
+				animalFormData,
+				where("severity", "==", severity),
+				where("isAllowed", "==", urlCheck ? true : false)
+			);
 			getDocs(q).then((res) => {
-				setData(res.docs.map((item) => item.data()));
+				setData(res.docs.map((item) => ({id: item.id, ...item.data()})));
 			});
 		} else if (severity === "") {
-			const q = query(animalFormData, where("country", "==", country));
+			const q = query(
+				animalFormData,
+				where("country", "==", country),
+				where("isAllowed", "==", urlCheck ? true : false)
+			);
 			getDocs(q).then((res) => {
-				setData(res.docs.map((item) => item.data()));
+				setData(res.docs.map((item) => ({id: item.id, ...item.data()})));
 			});
 		} else {
 			const q = query(
 				animalFormData,
 				where("country", "==", country),
-				where("severity", "==", severity)
+				where("severity", "==", severity),
+				where("isAllowed", "==", urlCheck ? true : false)
 			);
 			getDocs(q).then((res) => {
-				setData(res.docs.map((item) => item.data()));
+				setData(res.docs.map((item) => ({id: item.id, ...item.data()})));
 			});
 		}
 	};

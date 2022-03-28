@@ -109,25 +109,33 @@ const MatcherPage = (props) => {
 
 	const handleSubmit = () => {
 		const {severity, country} = filter;
-
-		if (!country) {
-			const q = query(WorkCases, where("severity", "==", severity));
+		if (country === "") {
+			const q = query(
+				WorkCases,
+				where("severity", "==", severity),
+				where("isAllowed", "==", urlCheck ? true : false)
+			);
 			getDocs(q).then((res) => {
-				setWorkData(res.docs.map((item) => item.data()));
+				setWorkData(res.docs.map((item) => ({id: item.id, ...item.data()})));
 			});
 		} else if (severity === "") {
-			const q = query(WorkCases, where("country", "==", country));
+			const q = query(
+				WorkCases,
+				where("country", "==", country),
+				where("isAllowed", "==", urlCheck ? true : false)
+			);
 			getDocs(q).then((res) => {
-				setWorkData(res.docs.map((item) => item.data()));
+				setWorkData(res.docs.map((item) => ({id: item.id, ...item.data()})));
 			});
 		} else {
 			const q = query(
 				WorkCases,
 				where("country", "==", country),
-				where("severity", "==", severity)
+				where("severity", "==", severity),
+				where("isAllowed", "==", urlCheck ? true : false)
 			);
 			getDocs(q).then((res) => {
-				setWorkData(res.docs.map((item) => item.data()));
+				setWorkData(res.docs.map((item) => ({id: item.id, ...item.data()})));
 			});
 		}
 	};

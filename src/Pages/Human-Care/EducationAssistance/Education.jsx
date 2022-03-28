@@ -155,14 +155,22 @@ const MatcherPage = (props) => {
 	const handleSubmit = () => {
 		const {severity, country} = filter;
 		if (country === "") {
-			const q = query(EducationCases, where("severity", "==", severity));
+			const q = query(
+				EducationCases,
+				where("severity", "==", severity),
+				where("isAllowed", "==", urlCheck ? true : false)
+			);
 			getDocs(q).then((res) => {
 				setEducationData(
 					res.docs.map((item) => ({id: item.id, ...item.data()}))
 				);
 			});
 		} else if (severity === "") {
-			const q = query(EducationCases, where("country", "==", country));
+			const q = query(
+				EducationCases,
+				where("country", "==", country),
+				where("isAllowed", "==", urlCheck ? true : false)
+			);
 			getDocs(q).then((res) => {
 				setEducationData(
 					res.docs.map((item) => ({id: item.id, ...item.data()}))
@@ -172,7 +180,8 @@ const MatcherPage = (props) => {
 			const q = query(
 				EducationCases,
 				where("country", "==", country),
-				where("severity", "==", severity)
+				where("severity", "==", severity),
+				where("isAllowed", "==", urlCheck ? true : false)
 			);
 			getDocs(q).then((res) => {
 				setEducationData(
