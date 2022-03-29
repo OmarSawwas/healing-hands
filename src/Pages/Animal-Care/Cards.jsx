@@ -16,16 +16,16 @@ const Cards = (props) => {
 				role="list"
 				className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3"
 			>
-				{data.map((item) => (
+				{data.map((item, index) => (
 					<li
-						key={item.id}
+						key={index}
 						className="col-span-1 bg-white rounded-lg  divide-y divide-gray-200"
 					>
 						<div className="w-full flex items-center justify-between p-6 space-x-6">
 							<div className="flex-1 ">
 								<div>
 									<SingleCard
-										key={item.id}
+										key={index}
 										Type={item.type}
 										Age={item.age}
 										Environment={item.raisedEnvironment}

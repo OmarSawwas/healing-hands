@@ -56,7 +56,6 @@ const Filter = (props) => {
 						<Disclosure.Panel className="pt-6">
 							<div className="space-y-2">
 								{severityFilters.options.map((option, optionIdx) => {
-									console.log(filter.severity);
 									return (
 										<div key={optionIdx} className="flex items-center">
 											<input

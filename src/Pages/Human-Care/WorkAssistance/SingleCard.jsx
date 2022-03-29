@@ -45,26 +45,28 @@ const WorkCard = (props) => {
 	// Interested Content
 
 	const interestedClick = async () => {
-		const userDocRef = doc(db, "Users", userId);
+		if (user) {
+			const userDocRef = doc(db, "Users", userId);
 
-		if (interested) {
-			const filteredPosts = user.favoritePosts.workPosts.filter(
-				(item) => item !== Id
-			);
-			await updateDoc(userDocRef, {
-				favoritePosts: {
-					...user.favoritePosts,
-					workPosts: filteredPosts,
-				},
-			});
-		} else {
-			const newFavoritePosts = [...user.favoritePosts.workPosts, Id];
-			await updateDoc(userDocRef, {
-				favoritePosts: {
-					...user.favoritePosts,
-					workPosts: newFavoritePosts,
-				},
-			});
+			if (interested) {
+				const filteredPosts = user.favoritePosts.workPosts.filter(
+					(item) => item !== Id
+				);
+				await updateDoc(userDocRef, {
+					favoritePosts: {
+						...user.favoritePosts,
+						workPosts: filteredPosts,
+					},
+				});
+			} else {
+				const newFavoritePosts = [...user.favoritePosts.workPosts, Id];
+				await updateDoc(userDocRef, {
+					favoritePosts: {
+						...user.favoritePosts,
+						workPosts: newFavoritePosts,
+					},
+				});
+			}
 		}
 	};
 	// Doc Reference

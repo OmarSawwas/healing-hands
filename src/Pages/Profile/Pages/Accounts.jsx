@@ -243,6 +243,7 @@ const Accounts = (props) => {
 				</div>
 			)}
 			{user && !user.isAdmin && <Error />}
+			{!user && <Error />}
 		</Sidebar>
 	);
 };

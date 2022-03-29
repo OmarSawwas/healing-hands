@@ -217,6 +217,7 @@ const PendingPosts = (props) => {
 						</div>
 					)}
 					{user && !user.isAdmin && <Error />}
+					{!user && <Error />}
 				</main>
 			</div>
 		</div>

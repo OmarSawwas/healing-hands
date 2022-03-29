@@ -15,19 +15,18 @@ const Cards = (props) => {
 				role="list"
 				className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3"
 			>
-				{user &&
-					data &&
-					data.map((item) => {
+				{data &&
+					data.map((item, index) => {
 						return (
 							<li
-								key={item.id}
+								key={index}
 								className="col-span-1 bg-white rounded-lg  divide-y divide-gray-200"
 							>
 								<div className="w-full flex items-center justify-between px-2 py-2 space-x-6">
 									<div className="flex-1  ">
 										<div>
 											<SingleCard
-												key={item.id}
+												key={index}
 												Age={item.age}
 												Info={item.infoAboutHealthProblem}
 												Country={item.country}

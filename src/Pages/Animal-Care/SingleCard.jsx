@@ -70,42 +70,44 @@ const AnimalCard = (props) => {
 	// Interested Content
 
 	const interestedClick = async () => {
-		const userDocRef = doc(db, "Users", userId);
+		if (user) {
+			const userDocRef = doc(db, "Users", userId);
 
-		if (interested) {
-			const filteredPosts = user.favoritePosts.animalPosts.filter(
-				(item) => item !== Id
-			);
-			await updateDoc(userDocRef, {
-				favoritePosts: {
-					...user.favoritePosts,
-					animalPosts: filteredPosts,
-				},
-			});
-		} else {
-			const newFavoritePosts = [...user.favoritePosts.animalPosts, Id];
-			await updateDoc(userDocRef, {
-				favoritePosts: {
-					...user.favoritePosts,
-					animalPosts: newFavoritePosts,
-				},
-			});
+			if (interested) {
+				const filteredPosts = user.favoritePosts.animalPosts.filter(
+					(item) => item !== Id
+				);
+				await updateDoc(userDocRef, {
+					favoritePosts: {
+						...user.favoritePosts,
+						animalPosts: filteredPosts,
+					},
+				});
+			} else {
+				const newFavoritePosts = [...user.favoritePosts.animalPosts, Id];
+				await updateDoc(userDocRef, {
+					favoritePosts: {
+						...user.favoritePosts,
+						animalPosts: newFavoritePosts,
+					},
+				});
+			}
 		}
-	};
-	// Doc Reference
+		// Doc Reference
 
-	// Change name submit button
-	const submitPercentage = async () => {
-		if (percentage > 0 && percentage < 100) {
-			const upDate = async () => {
-				if (Id) {
-					await updateDoc(docRef, {percentageCompleted: percentage});
-				}
-			};
+		// Change name submit button
+		const submitPercentage = async () => {
+			if (percentage > 0 && percentage < 100) {
+				const upDate = async () => {
+					if (Id) {
+						await updateDoc(docRef, {percentageCompleted: percentage});
+					}
+				};
 
-			upDate();
-		}
-		setEditMode(false);
+				upDate();
+			}
+			setEditMode(false);
+		};
 	};
 	const deletePost = async () => {
 		setPropOpen(true);
