@@ -54,7 +54,7 @@ const Accounts = (props) => {
 			setAccounts(snap.docs.map((item) => item.data()));
 		});
 	};
-
+	console.log(user);
 	useEffect(() => {
 		getData();
 		return () => getData();
@@ -199,34 +199,37 @@ const Accounts = (props) => {
 															<td className="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6">
 																{adminOnPage && (
 																	<div className="flex">
-																		<button
-																			href="#"
-																			className="mx-8 text-green-600 font-bold hover:text-green-900 flex"
-																			onClick={() => makeAdmin(item.email)}
-																		>
-																			Make Admin
-																		</button>
+																		{!item.isAdmin && (
+																			<button
+																				href="#"
+																				className="mx-8 text-green-600 font-bold hover:text-green-900 flex"
+																				onClick={() => makeAdmin(item.email)}
+																			>
+																				Make Admin
+																			</button>
+																		)}
+																		{user.email != item.email && (
+																			<button
+																				href="#"
+																				className="text-red-600 hover:text-indigo-900 flex"
+																				onClick={() =>
+																					redirectFunction(item.email)
+																				}
+																			>
+																				<UserIcon
+																					className="w-5 h-5"
+																					id={item.email}
+																				/>
+																				<span className="ml-2">
+																					{" "}
+																					More Information
+																				</span>
 
-																		<button
-																			href="#"
-																			className="text-red-600 hover:text-indigo-900 flex"
-																			onClick={() =>
-																				redirectFunction(item.email)
-																			}
-																		>
-																			<UserIcon
-																				className="w-5 h-5"
-																				id={item.email}
-																			/>
-																			<span className="ml-2">
-																				{" "}
-																				More Information
-																			</span>
-
-																			<span className="sr-only">
-																				, {item.name}
-																			</span>
-																		</button>
+																				<span className="sr-only">
+																					, {item.name}
+																				</span>
+																			</button>
+																		)}
 																	</div>
 																)}
 															</td>

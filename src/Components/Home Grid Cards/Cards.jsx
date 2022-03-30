@@ -20,7 +20,7 @@ const data = [
 	},
 	{
 		Title: "Animal-Care",
-		description: "Help animals find a family to be adopted",
+		description: "Help animals find a loving family and a safe shelter",
 		href: "/Animal-Care-Form",
 	},
 ];
