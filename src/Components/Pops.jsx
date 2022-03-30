@@ -5,7 +5,7 @@ import {deleteDoc} from "firebase/firestore";
 import {async} from "@firebase/util";
 const Pops = (props) => {
 	const [open, setOpen] = useState(true);
-	const {docRef, setPropOpen, propOpen} = props;
+	const {docRef, setPropOpen, propOpen, cardId} = props;
 	const cancelButtonRef = useRef(null);
 	const deleteClick = async () => {
 		if (docRef) {
@@ -16,6 +16,7 @@ const Pops = (props) => {
 			setPropOpen(false);
 		}
 	};
+	console.log(cardId);
 
 	return (
 		<Transition.Root show={propOpen} as={Fragment}>

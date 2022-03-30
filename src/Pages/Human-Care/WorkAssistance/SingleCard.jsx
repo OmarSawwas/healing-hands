@@ -98,7 +98,12 @@ const WorkCard = (props) => {
 	};
 	return (
 		<div>
-			<Pops docRef={docRef} setPropOpen={setPropOpen} propOpen={propOpen} />
+			<Pops
+				docRef={docRef}
+				setPropOpen={setPropOpen}
+				propOpen={propOpen}
+				cardId={Id}
+			/>
 			{user && user.isAdmin && (
 				<div className="flex justify-end" onClick={deletePost}>
 					<button id="about" value="about">

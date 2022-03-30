@@ -28,21 +28,6 @@ const AnimalForm = () => {
 		percentageCompleted: 0,
 	});
 
-	const uploadFile = async (event) => {
-		if (!event.target.files) return;
-		const file = event.target.files[0];
-		const storageRef = ref(storage, `images/${file.name}`);
-		const metadata = {
-			contentType: file.type,
-		};
-		await uploadBytes(storageRef, file, metadata);
-		getDownloadURL(storageRef).then((res) => {
-			setFormData((prevState) => ({
-				...prevState,
-				files: res,
-			}));
-		});
-	};
 	const handleChange = (e) => {
 		const {name, value} = e.target;
 		setFormData((prevState) => ({
@@ -63,7 +48,22 @@ const AnimalForm = () => {
 			</option>
 		);
 	});
-
+	const uploadFile = async (event) => {
+		if (!event.target.files) return;
+		const file = event.target.files[0];
+		console.log(file);
+		const storageRef = ref(storage, `images/${file.name}`);
+		const metadata = {
+			contentType: file.type,
+		};
+		await uploadBytes(storageRef, file, metadata);
+		getDownloadURL(storageRef).then((res) => {
+			setFormData((prevState) => ({
+				...prevState,
+				files: res,
+			}));
+		});
+	};
 	return (
 		<div className="bg-[#3a3534]">
 			<LoadingPop name="Animal Care" />

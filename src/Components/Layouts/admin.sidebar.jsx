@@ -168,7 +168,7 @@ const Index = (props) => {
 				<div className="mt-16 hidden md:flex md:w-64 md:flex-col md:fixed md:inset-y-0">
 					{/* Sidebar component, swap this element with another sidebar if you like */}
 
-					<div className="flex-1 flex flex-col min-h-0 bg-[#292524]">
+					<div className="flex-1 flex flex-col min-h-0 bg-[#292524] mt-8">
 						<div className="flex items-center h-0 flex-shrink-0 px-4 bg-gray-900"></div>
 						<div className="flex-1 flex flex-col overflow-y-auto">
 							<nav className="flex-1 px-2 py-3 space-y-1">

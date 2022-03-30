@@ -48,6 +48,7 @@ const HealthForm = () => {
 	const uploadFile = async (event) => {
 		if (!event.target.files) return;
 		const file = event.target.files[0];
+		console.log(file);
 		const storageRef = ref(storage, `images/${file.name}`);
 		const metadata = {
 			contentType: file.type,

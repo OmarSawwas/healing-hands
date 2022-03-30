@@ -138,26 +138,26 @@ const Manager = () => {
 	return (
 		<Sidebar>
 			<Wrapper loading={loading}>
-				<div className="border-1 border-gray-500 w-full flex items-center relative">
+				<div className="border-1 border-gray-500 w-full flex items-center relative bg-[#F0A500]">
 					<div className="absolute top-0 right-0 ">
 						<button
 							onClick={handleSubmit}
 							type="button"
-							className="w-24 bg-[#f2b400] hover:bg-[#ecc242]   mx-4  inline-flex items-center px-4 py-1.5 border border-transparent text-s font-medium rounded shadow-sm text-white "
+							className="w-24 bg-[#1B1A17] hover:bg-stone-800   mx-4 my-4 inline-flex items-center px-4 py-1.5 border border-transparent text-s font-medium rounded shadow-sm text-[#F0A500] "
 						>
 							Submit
 						</button>
 						<button
 							onClick={handleToggleEditMode}
 							type="button"
-							className="w-24 bg-[#f2b400] hover:bg-[#ecc242]  mx-6  mx-2 inline-flex items-center px-4 py-1.5 border border-transparent text-s font-medium rounded shadow-sm text-white  "
+							className="w-24 bg-[#1B1A17] hover:bg-stone-800  mx-6  mx-2 inline-flex items-center px-4 py-1.5 border border-transparent text-s font-medium rounded shadow-sm text-[#F0A500]  "
 						>
 							<PencilIcon className="h-4 w-4" />
 							Edit
 						</button>
 					</div>
 
-					<div className="mt-6">
+					<div className="mt-10 mb-6 ">
 						<div className=" flex-grow lg:mt-0 lg:ml-6 lg:flex-grow-0 lg:flex-shrink-0">
 							<div className="mt-1 lg:hidden">
 								<div className="flex items-center">
@@ -166,16 +166,16 @@ const Manager = () => {
 										aria-hidden="true"
 									>
 										<img
-											className="rounded-full w-36 h-36 border-2"
+											className="rounded-full w-48 h-48 border-2 z-10"
 											src={data.image}
 											alt=""
 										/>
 									</div>
 									<div className="ml-5 rounded-md shadow-sm">
-										<div className="group relative border border-gray-300 rounded-md py-2 px-3 flex items-center justify-center hover:bg-gray-50 focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-sky-500">
+										<div className="group relative bg-[#1B1A17] border border-[#1B1A17] rounded-md py-2 px-3 flex items-center justify-center hover:bg-gray-50">
 											<label
 												htmlFor="mobile-user-photo"
-												className="relative text-sm leading-4 font-medium text-gray-700 pointer-events-none"
+												className="relative text-sm leading-4 font-medium text-yellow-500 pointer-events-none"
 											>
 												<span className="font-bold">Change</span>
 												<span className="sr-only"> user photo</span>
@@ -194,13 +194,13 @@ const Manager = () => {
 
 							<div className="hidden relative rounded-full overflow-hidden lg:block">
 								<img
-									className="relative rounded-full w-36 h-36 border-2"
+									className="relative rounded-full w-48 h-48 border-2 z-10"
 									src={data.image}
 									alt=""
 								/>
 								<label
 									htmlFor="desktop-user-photo"
-									className="absolute inset-0 w-full h-full bg-black bg-opacity-75 flex items-center justify-center text-sm font-medium text-white opacity-0 hover:opacity-100 focus-within:opacity-100"
+									className="absolute inset-0 w-full h-full bg-black bg-opacity-75 flex items-center justify-center text-sm font-medium text-[#e6ad1c] opacity-0 hover:opacity-100 focus-within:opacity-100"
 								>
 									<span className="font-bold">Change</span>
 									<span className="sr-only"> user photo</span>
@@ -220,10 +220,10 @@ const Manager = () => {
 					<div className="mt-10">
 						{!editMode ? (
 							<div className="flex ">
-								<h1 className="ml-5 text-2xl font-bold leading-7 text-gray-200 sm:leading-9 sm:truncate justify-center">
+								<h1 className="ml-5 text-2xl font-bold leading-7 text-[#1B1A17] sm:leading-9 sm:truncate justify-center">
 									{data.fName}
 								</h1>
-								<h1 className="ml-2 text-2xl font-bold leading-7 text-gray-200 sm:leading-9 sm:truncate justify-center">
+								<h1 className="ml-2 text-2xl font-bold leading-7 text-[#1B1A17] sm:leading-9 sm:truncate justify-center">
 									{data.lName}
 								</h1>
 							</div>
@@ -237,7 +237,7 @@ const Manager = () => {
 									id="fName"
 									required
 									placeholder="FirstName here... "
-									className=" ml-2 box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), max-w-lg block w-full shadow-sm  focus:border-indigo-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md"
+									className=" ml-2 box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), max-w-lg block w-full shadow-sm  focus:border-indigo-500 sm:max-w-xs sm:text-sm border-[#1B1A17] rounded-md"
 								/>
 								<input
 									type="text"
@@ -247,14 +247,14 @@ const Manager = () => {
 									id="lName"
 									required
 									placeholder="LastName here... "
-									className="ml-2 box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), max-w-lg block w-full shadow-sm  focus:border-indigo-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md"
+									className="ml-2 box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), max-w-lg block w-full shadow-sm  focus:border-indigo-500 sm:max-w-xs sm:text-sm border-[#1B1A17] rounded-md"
 								/>
 							</div>
 						)}
 						{data.isAdmin && (
 							<div className="flex items-center ml-4 mt-2">
-								<CheckCircleIcon className="h-6 w-6 text-green-500" />
-								<p className="text-md p-0 ml-2 mb-0 text-gray-200">
+								<CheckCircleIcon className="h-6 w-6 text-blue-800" />
+								<p className="text-md p-0 ml-2 mb-0 text-1B1A17">
 									Administrator
 								</p>
 							</div>
@@ -267,30 +267,30 @@ const Manager = () => {
 					<div className="grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-4 ">
 						<div className=" flex col-span-1">
 							{!editMode ? (
-								<div className="flex items-center rounded-lg border-2 px-2 pb-1 w-64  hover:border-[#e6ad1c]  shadow-xl ">
+								<div className="flex items-center rounded-lg border-2 border-stone-800 px-2 pb-1 w-64  hover:border-[#e6ad1c]  shadow-xl bg-yellow-500">
 									<div className="flex items-center">
-										<IdentificationIcon className="h-6 w-6 ml-1 text-[#f2b400]" />
+										<IdentificationIcon className="h-6 w-6 ml-1 text-stone-800" />
 									</div>
 									<div className="ml-12">
-										<div className="text-lg font-medium text-gray-100 p-0 m-0">
+										<div className="text-lg font-medium text-stone-800 p-0 m-0">
 											<label htmlFor="age" className="flex ml-2 justify-center">
 												Age
 											</label>
 										</div>
 										<div className="ml-4">
-											<p className="text-s font-small text-gray-200 p-0 m-0">
+											<p className="text-s font-small text-stone-800 p-0 m-0">
 												{data.age} years
 											</p>
 										</div>
 									</div>
 								</div>
 							) : (
-								<div className="flex items-center rounded-lg border-2 p-2 w-64 hover:border-[#e6ad1c]  shadow-xl ">
+								<div className="flex items-center rounded-lg border-2 border-stone-800 p-2 w-64 hover:border-[#e6ad1c]  shadow-xl bg-yellow-500">
 									<div className="flex items-center">
-										<IdentificationIcon className="h-6 w-6 ml-1 text-[#f2b400]" />
+										<IdentificationIcon className="h-6 w-6 ml-1 text-stone-800" />
 									</div>
 									<div>
-										<div className="text-lg font-medium text-gray-100 p-0 m-0">
+										<div className="text-lg font-medium text-stone-800 p-0 m-0 ">
 											<label htmlFor="age" className="flex ml-2 justify-center">
 												Age
 											</label>
@@ -304,7 +304,7 @@ const Manager = () => {
 												id="age"
 												required
 												placeholder={data.age}
-												className=" ml-2 box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), max-w-lg block w-full shadow-sm  focus:border-indigo-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md"
+												className=" ml-2 box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), max-w-lg block w-full shadow-sm  focus:border-indigo-500 sm:max-w-xs sm:text-sm border-[#1B1A17] rounded-md"
 											/>
 										</div>
 									</div>
@@ -315,30 +315,30 @@ const Manager = () => {
 						{/* Element 2 */}
 						<div className="col-span-1">
 							{!editMode ? (
-								<div className="flex items-center rounded-lg border-2 px-1 pb-1 w-64  hover:border-[#e6ad1c]  shadow-xl ">
+								<div className="flex items-center rounded-lg border-2 border-stone-800 px-1 pb-1 w-64  hover:border-[#e6ad1c]  shadow-xl bg-yellow-500">
 									<div className="flex items-center">
-										<AtSymbolIcon className="h-6 w-6 ml-1 text-[#f2b400]" />
+										<AtSymbolIcon className="h-6 w-6 ml-1 text-stone-800" />
 									</div>
 									<div className="ml-4 ">
-										<div className="text-lg font-medium text-gray-100 p-0 m-0">
+										<div className="text-lg font-medium text-stone-800 p-0 m-0">
 											<label htmlFor="email" className="flex  justify-center">
 												Email
 											</label>
 										</div>
 										<div className="ml-1">
-											<p className="text-s font-small text-gray-200 p-0 m-0">
+											<p className="text-s font-small text-stone-800 p-0 m-0">
 												{data.email}
 											</p>
 										</div>
 									</div>
 								</div>
 							) : (
-								<div className="flex items-center rounded-lg border-2 p-2 w-64 hover:border-[#e6ad1c]  shadow-xl ">
+								<div className="flex items-center rounded-lg border-2 border-stone-800 p-2 w-64 hover:border-[#e6ad1c]  shadow-xl bg-yellow-500">
 									<div className="flex items-center">
-										<AtSymbolIcon className="h-6 w-6 ml-1 text-[#f2b400]" />
+										<AtSymbolIcon className="h-6 w-6 ml-1 text-stone-800" />
 									</div>
 									<div>
-										<div className="text-lg font-medium text-gray-100 p-0 ">
+										<div className="text-lg font-medium text-stone-800 p-0 ">
 											<label
 												htmlFor="email"
 												className="flex ml-2 justify-center"
@@ -355,7 +355,7 @@ const Manager = () => {
 												id="email"
 												required
 												placeholder="Someone@somthing.com... "
-												className=" box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), max-w-lg block w-full shadow-sm  focus:border-[#f2d17c sm:max-w-xs sm:text-sm border-gray-300 rounded-md"
+												className=" box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), max-w-lg block w-full shadow-sm  focus:border-[#f2d17c sm:max-w-xs sm:text-sm border-[#1B1A17] rounded-md"
 											/>
 										</div>
 									</div>
@@ -366,30 +366,30 @@ const Manager = () => {
 						{/* Element 3 */}
 						<div className=" flex col-span-1">
 							{!editMode ? (
-								<div className="flex items-center rounded-lg border-2 px-1 pb-1 w-64 hover:border-[#e6ad1c]  shadow-xl ">
+								<div className="flex items-center rounded-lg border-2 border-stone-800 px-1 pb-1 w-64 hover:border-[#e6ad1c]  shadow-xl bg-yellow-500">
 									<div className="flex items-center">
-										<FlagIcon className="h-6 w-6 ml-1 text-[#f2b400]" />
+										<FlagIcon className="h-6 w-6 ml-1 text-stone-800" />
 									</div>
 									<div className="ml-16 ">
-										<div className="text-lg font-medium text-gray-100 p-0 m-0">
+										<div className="text-lg font-medium text-stone-800 p-0 m-0">
 											<label htmlFor="work" className="flex  justify-center">
 												Country
 											</label>
 										</div>
 										<div className="ml-2">
-											<p className="text-m font-small text-gray-200 p-0 m-0">
+											<p className="text-m font-small text-stone-800 p-0 m-0">
 												{data.country}
 											</p>
 										</div>
 									</div>
 								</div>
 							) : (
-								<div className="flex items-center rounded-lg border-2 p-2 w-64 hover:border-2 hover:border-gray-900  shadow-xl ">
+								<div className="flex items-center rounded-lg border-2 border-stone-800 p-2 w-64 hover:border-2 hover:border-gray-900  shadow-xl bg-yellow-500">
 									<div className="flex items-center">
-										<FlagIcon className="h-6 w-6 ml-1 text-[#f2b400]" />
+										<FlagIcon className="h-6 w-6 ml-1 text-stone-800" />
 									</div>
 									<div>
-										<div className="text-lg font-medium text-gray-100 p-0 m-0">
+										<div className="text-lg font-medium text-stone-800 p-0 m-0">
 											<label
 												htmlFor="country"
 												className="flex ml-2 justify-center"
@@ -412,7 +412,7 @@ const Manager = () => {
 														onChange={handleChange}
 														name="country"
 														required
-														className="col-span-2 box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), max-w-lg block  focus:border-indigo-500 w-full shadow-sm sm:max-w-xs sm:text-sm border-gray-300 rounded-md "
+														className="col-span-2 box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), max-w-lg block  focus:border-indigo-500 w-full shadow-sm sm:max-w-xs sm:text-sm border-[#1B1A17] rounded-md "
 													>
 														<option hidden disabled>
 															•Specify country•
@@ -431,12 +431,12 @@ const Manager = () => {
 					<div className="grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-4 mt-6">
 						<div className=" flex col-span-1">
 							{!editMode ? (
-								<div className="flex items-center rounded-lg border-2 px-1 pb-1 w-64  hover:border-[#e6ad1c]  shadow-xl ">
+								<div className="flex items-center rounded-lg border-2 border-stone-800 px-1 pb-1 w-64  hover:border-[#e6ad1c]  shadow-xl bg-yellow-500">
 									<div className="flex items-center">
-										<BriefcaseIcon className="h-6 w-6 ml-1 text-[#f2b400]" />
+										<BriefcaseIcon className="h-6 w-6 ml-1 text-stone-800" />
 									</div>
 									<div className="ml-16 ">
-										<div className="text-lg font-medium text-gray-100 p-0 m-0">
+										<div className="text-lg font-medium text-stone-800 p-0 m-0">
 											<label
 												htmlFor="work"
 												className="flex ml-2 justify-center"
@@ -445,19 +445,19 @@ const Manager = () => {
 											</label>
 										</div>
 										<div className="ml-4">
-											<p className="text-m font-small text-gray-200 p-0 m-0">
+											<p className="text-m font-small text-stone-800 p-0 m-0">
 												{data.work}
 											</p>
 										</div>
 									</div>
 								</div>
 							) : (
-								<div className="flex items-center rounded-lg border-2 p-2 w-64 hover:border-2 hover:border-red-300  shadow-xl ">
+								<div className="flex items-center rounded-lg border-2 border-stone-800 p-2 w-64 hover:border-2 hover:border-red-300  shadow-xl bg-yellow-500">
 									<div className="flex items-center">
-										<BriefcaseIcon className="h-6 w-6 ml-1 text-[#f2b400]" />
+										<BriefcaseIcon className="h-6 w-6 ml-1 text-stone-800" />
 									</div>
 									<div>
-										<div className="text-lg font-medium text-gray-100 p-0 m-0">
+										<div className="text-lg font-medium text-stone-800 p-0 m-0">
 											<label
 												htmlFor="email"
 												className="flex ml-2 justify-center"
@@ -474,7 +474,7 @@ const Manager = () => {
 												id="work"
 												required
 												placeholder={"Beverely hills 29, 13B"}
-												className=" ml-2 box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), max-w-lg block w-full shadow-sm  focus:border-indigo-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md"
+												className=" ml-2 box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), max-w-lg block w-full shadow-sm  focus:border-indigo-500 sm:max-w-xs sm:text-sm border-[#1B1A17] rounded-md"
 											/>
 										</div>
 									</div>
@@ -483,12 +483,12 @@ const Manager = () => {
 						</div>
 						<div className=" flex col-span-1">
 							{!editMode ? (
-								<div className="flex items-center rounded-lg border-2 px-1 pb-1 w-64  hover:border-[#e6ad1c]  shadow-xl ">
+								<div className="flex items-center rounded-lg border-2 border-stone-800 px-1 pb-1 w-64  hover:border-[#e6ad1c]  shadow-xl bg-yellow-500">
 									<div className="flex items-center">
-										<PhoneIcon className="h-6 w-6 ml-1 text-[#f2b400]" />
+										<PhoneIcon className="h-6 w-6 ml-1 text-stone-800" />
 									</div>
 									<div className="ml-8 ">
-										<div className="text-lg font-medium text-gray-100 p-0 m-0">
+										<div className="text-lg font-medium text-stone-800 p-0 m-0">
 											<label
 												htmlFor="phone"
 												className="flex ml-2 justify-center"
@@ -497,19 +497,19 @@ const Manager = () => {
 											</label>
 										</div>
 										<div className="ml-2">
-											<p className="text-m font-small text-gray-200 p-0 m-0">
+											<p className="text-m font-small text-stone-800 p-0 m-0">
 												+{data.phoneCode}-{data.phone}
 											</p>
 										</div>
 									</div>
 								</div>
 							) : (
-								<div className="flex items-center rounded-lg border-2 p-2 w-64 hover:border-[#e6ad1c]  shadow-xl ">
+								<div className="flex items-center rounded-lg border-2 border-stone-800 p-2 w-64 hover:border-[#e6ad1c]  shadow-xl bg-yellow-500">
 									<div className="flex items-center">
-										<PhoneIcon className="h-6 w-6 ml-1 text-[#f2b400]" />
+										<PhoneIcon className="h-6 w-6 ml-1 text-stone-800" />
 									</div>
 									<div>
-										<div className="text-lg font-medium text-gray-100 p-0 m-0">
+										<div className="text-lg font-medium text-stone-800 p-0 m-0">
 											<label
 												htmlFor="phone"
 												className="flex ml-2 justify-center"
@@ -525,7 +525,7 @@ const Manager = () => {
 													onChange={handleChange}
 													name="phoneCode"
 													required
-													className="col-span-2 box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), max-w-lg block  focus:border-indigo-500 w-full shadow-sm sm:max-w-xs sm:text-sm border-gray-300 rounded-md "
+													className="col-span-2 box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), max-w-lg block  focus:border-indigo-500 w-full shadow-sm sm:max-w-xs sm:text-sm border-[#1B1A17] rounded-md "
 												>
 													<option hidden disabled>
 														•Specify country•
@@ -541,7 +541,7 @@ const Manager = () => {
 													id="phone"
 													required
 													placeholder={"000 00 00"}
-													className="col-span-2 ml-2 box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), max-w-lg block w-full shadow-sm  focus:border-indigo-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md"
+													className="col-span-2 ml-2 box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), max-w-lg block w-full shadow-sm  focus:border-indigo-500 sm:max-w-xs sm:text-sm border-[#1B1A17] rounded-md"
 												/>
 											</div>
 										</div>
@@ -552,30 +552,30 @@ const Manager = () => {
 						{/* Element 5 */}
 						<div className=" flex col-span-1">
 							{!editMode ? (
-								<div className="flex items-center rounded-lg border-2 px-1 pb-1 w-64  hover:border-[#e6ad1c]  shadow-xl ">
+								<div className="flex items-center rounded-lg border-2 border-stone-800 px-1 pb-1 w-64  hover:border-[#e6ad1c]  shadow-xl bg-yellow-500">
 									<div className="flex items-center">
-										<LocationMarkerIcon className="h-6 w-6 ml-1 text-[#f2b400]" />
+										<LocationMarkerIcon className="h-6 w-6 ml-1 text-stone-800" />
 									</div>
 									<div className="ml-12">
-										<div className="text-lg font-medium text-gray-100 p-0 m-0">
+										<div className="text-lg font-medium text-stone-800 p-0 m-0">
 											<label htmlFor="age" className="flex ml-2 justify-center">
 												Address
 											</label>
 										</div>
 										<div className="ml-3">
-											<p className="text-m font-small text-gray-200 p-0 m-0">
+											<p className="text-m font-small text-stone-800 p-0 m-0">
 												{data.address}
 											</p>
 										</div>
 									</div>
 								</div>
 							) : (
-								<div className="flex items-center rounded-lg border-2 p-2 w-64 hover:border-[#e6ad1c]  shadow-xl ">
+								<div className="flex items-center rounded-lg border-2 border-stone-800 p-2 w-64 hover:border-[#e6ad1c]  shadow-xl bg-yellow-500">
 									<div className="flex items-center">
-										<LocationMarkerIcon className="h-6 w-6 ml-1 text-[#f2b400]" />
+										<LocationMarkerIcon className="h-6 w-6 ml-1 text-stone-800" />
 									</div>
 									<div>
-										<div className="text-lg font-medium text-gray-100 p-0 m-0">
+										<div className="text-lg font-medium text-stone-800 p-0 m-0">
 											<label
 												htmlFor="address"
 												className="flex ml-2 justify-center"
@@ -592,7 +592,7 @@ const Manager = () => {
 												id="address"
 												required
 												placeholder={"Beverely hills 29, 13B"}
-												className=" ml-2 box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), max-w-lg block w-full shadow-sm  focus:border-indigo-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md"
+												className=" ml-2 box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), max-w-lg block w-full shadow-sm  focus:border-indigo-500 sm:max-w-xs sm:text-sm border-[#1B1A17] rounded-md"
 											/>
 										</div>
 									</div>

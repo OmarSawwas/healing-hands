@@ -98,7 +98,12 @@ const EducationCard = (props) => {
 	};
 	return (
 		<div>
-			<Pops docRef={docRef} setPropOpen={setPropOpen} propOpen={propOpen} />
+			<Pops
+				docRef={docRef}
+				cardId={Id}
+				setPropOpen={setPropOpen}
+				propOpen={propOpen}
+			/>
 			{user && user.isAdmin && (
 				<div className="flex justify-end" onClick={deletePost}>
 					<button id="about" value="about">

@@ -56,7 +56,6 @@ const UserInfo = (props) => {
 	const uploadFile = async (event) => {
 		if (!event.target.files) return;
 		const file = event.target.files[0];
-		console.log(file);
 		const storageRef = ref(storage, `images/${file.name}`);
 		const metadata = {
 			contentType: file.type,
@@ -69,7 +68,7 @@ const UserInfo = (props) => {
 			}));
 		});
 	};
-	console.log(userData);
+
 	return (
 		<div className="bg-[#3a3534]">
 			<div className="min-h-full flex flex-col justify-center py-12 sm:px-6 lg:px-8">

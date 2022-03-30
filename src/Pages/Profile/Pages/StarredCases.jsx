@@ -36,6 +36,7 @@ const StarredCases = (props) => {
 			if (user.favoritePosts.healthPosts) {
 				await onSnapshot(userRef, async (userDoc) => {
 					const healthPosts = userDoc.data().favoritePosts.healthPosts;
+
 					const fbPosts = await Promise.all(
 						healthPosts.map(async (item) => {
 							const postRef = doc(db, "HealthCases", item);
@@ -43,6 +44,7 @@ const StarredCases = (props) => {
 							return {id: post.id, ...post.data()};
 						})
 					);
+					console.log(fbPosts);
 					setHealthDocs(fbPosts);
 				});
 			}
@@ -105,7 +107,7 @@ const StarredCases = (props) => {
 							</div>
 						</div>
 						<hr></hr>
-						<div className="mt-2">
+						<div className="mt-2 mb-8">
 							{user && healthDocs && (
 								<HealthCards data={healthDocs} user={user} userId={userId} />
 							)}
@@ -119,7 +121,7 @@ const StarredCases = (props) => {
 							</div>
 						</div>
 						<hr></hr>
-						<div className="mt-2">
+						<div className="mt-2 mb-8">
 							{user && workDocs && (
 								<WorkCards data={workDocs} user={user} userId={userId} />
 							)}
@@ -133,7 +135,7 @@ const StarredCases = (props) => {
 							</div>
 						</div>
 						<hr></hr>
-						<div className="mt-2">
+						<div className="mt-2 mb-8">
 							{user && educationDocs && (
 								<EducationCards
 									data={educationDocs}
@@ -151,7 +153,7 @@ const StarredCases = (props) => {
 							</div>
 						</div>
 						<hr></hr>
-						<div className="mt-2">
+						<div className="mt-2 mb-8">
 							{user && animalDocs && (
 								<AnimalCards data={animalDocs} user={user} userId={userId} />
 							)}

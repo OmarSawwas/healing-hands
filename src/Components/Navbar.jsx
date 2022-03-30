@@ -241,7 +241,7 @@ const Navbar = (props) => {
 								<Disclosure.Button
 									as="a"
 									to="#"
-									className="border-transparent bg-stone-800 text-yellow-400 hover:bg-gray-50 hover:border-yellow-400 hover:text-gray-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium sm:pl-5 sm:pr-6"
+									className="border-transparent bg-stone-800 text-yellow-400  hover:border-yellow-400 hover:text-gray-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium sm:pl-5 sm:pr-6"
 								>
 									<Link to="/">Home</Link>
 								</Disclosure.Button>
@@ -249,21 +249,21 @@ const Navbar = (props) => {
 								<Disclosure.Button
 									as="a"
 									to="#"
-									className="border-transparent text-yellow-400 hover:bg-gray-50 hover:border-yellow-400 hover:text-gray-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium sm:pl-5 sm:pr-6"
+									className="border-transparent text-yellow-400  hover:border-yellow-400 hover:text-gray-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium sm:pl-5 sm:pr-6"
 								>
 									<Link to="/contact-us">Contact Us</Link>
 								</Disclosure.Button>
 								<Disclosure.Button
 									as="a"
 									to="#"
-									className="border-transparent text-yellow-400 hover:bg-gray-50 hover:border-yellow-400 hover:text-gray-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium sm:pl-5 sm:pr-6"
+									className="border-transparent text-yellow-400  hover:border-yellow-400 hover:text-gray-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium sm:pl-5 sm:pr-6"
 								>
 									<List />
 								</Disclosure.Button>
 								<Disclosure.Button
 									as="a"
 									to="#"
-									className="border-transparent text-yellow-400 hover:bg-gray-50 hover:border-yellow-400 hover:text-gray-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium sm:pl-5 sm:pr-6"
+									className="border-transparent text-yellow-400  hover:border-yellow-400 hover:text-gray-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium sm:pl-5 sm:pr-6"
 								>
 									<List2 />
 								</Disclosure.Button>
@@ -273,7 +273,7 @@ const Navbar = (props) => {
 									<Disclosure.Button
 										as="a"
 										to="#"
-										className="border-transparent text-yellow-400 hover:bg-gray-50 hover:border-yellow-400 hover:text-gray-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium sm:pl-5 sm:pr-6"
+										className="border-transparent text-yellow-400  hover:border-yellow-400 hover:text-gray-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium sm:pl-5 sm:pr-6"
 									>
 										<div className="flex justify-center">
 											{user && (
@@ -289,14 +289,14 @@ const Navbar = (props) => {
 									<Disclosure.Button
 										as="a"
 										to="#"
-										className="border-transparent text-yellow-400 hover:bg-gray-50 hover:border-yellow-400 hover:text-gray-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium sm:pl-5 sm:pr-6"
+										className="border-transparent text-yellow-400  hover:border-yellow-400 hover:text-gray-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium sm:pl-5 sm:pr-6"
 									>
 										<Link to={`/profile/${userId}`}>Your Profile</Link>
 									</Disclosure.Button>
 									<Disclosure.Button
 										as="a"
 										to="#"
-										className="border-transparent text-yellow-400 hover:bg-gray-50 hover:border-yellow-400 hover:text-gray-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium sm:pl-5 sm:pr-6"
+										className="border-transparent text-yellow-400  hover:border-yellow-400 hover:text-gray-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium sm:pl-5 sm:pr-6"
 									>
 										{user && user.isAdmin && (
 											<button
@@ -335,7 +335,7 @@ const Navbar = (props) => {
 									<Disclosure.Button
 										as="a"
 										to="#"
-										className="border-transparent text-yellow-400 hover:bg-gray-50 hover:border-yellow-400 hover:text-gray-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium sm:pl-5 sm:pr-6"
+										className="border-transparent text-yellow-400  hover:border-yellow-400 hover:text-gray-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium sm:pl-5 sm:pr-6"
 									>
 										{user ? (
 											<button onClick={handleLogout}>Sign out</button>

@@ -7,28 +7,28 @@ export default function Example() {
 	const navigate = useNavigate();
 	return (
 		<footer className="p-4 sm:p-6 bg-stone-800">
-			<div className="md:flex md:justify-between ">
+			<div className="md:flex md:justify-between z-40">
 				<div className="mb-6 md:mb-0  ">
-					<Link to="/" className="flex items-center">
+					<Link to="/" className="flex items-center z-40">
 						<img
-							className="block h-24 w-24  rounded-full hover:opacity-75"
+							className="block h-24 w-24  rounded-full hover:opacity-75 z-40"
 							src={Logo2}
 							alt="Logo"
 							onClick={() => {
 								navigate("/");
 							}}
 						/>
-						<span className="ml-2 self-center text-2xl font-semibold whitespace-nowrap text-yellow-500 hover:opacity-75">
+						<span className="ml-2 self-center text-2xl font-semibold whitespace-nowrap text-yellow-500 hover:opacity-75 z-40">
 							Healing-Hands
 						</span>
 					</Link>
 				</div>
-				<div className="grid grid-cols-2 gap-8 px-6 md:grid-cols-4">
+				<div className="grid grid-cols-2 gap-8 px-6 md:grid-cols-4 z-40">
 					<div>
-						<h2 className="mb-6 text-sm font-semibold text-yellow-500 uppercase">
+						<h2 className="mb-6 text-sm font-semibold text-yellow-500 uppercase z-40">
 							Healing Hands
 						</h2>
-						<ul className="text-white">
+						<ul className="text-white z-40">
 							<li className="mb-4">
 								<Link
 									to="/Human-Care/Health"
@@ -67,7 +67,7 @@ export default function Example() {
 						<h2 className="mb-6 text-sm font-semibold text-yellow-500 uppercase">
 							New Posts
 						</h2>
-						<ul className="text-white">
+						<ul className="text-white z-40">
 							<li className="mb-4">
 								<Link
 									to="/Human-Care/Health-Form"
@@ -106,7 +106,7 @@ export default function Example() {
 						<h2 className="mb-6 text-sm font-semibold text-yellow-500 uppercase">
 							Follow us
 						</h2>
-						<ul className="text-white">
+						<ul className="text-white z-40">
 							<li className="mb-4">
 								<a href="#" className="hover:underline hover:text-yellow-500 ">
 									Facebook
@@ -133,7 +133,7 @@ export default function Example() {
 						<h2 className="mb-6 text-sm font-semibold text-yellow-500 uppercase">
 							Legal
 						</h2>
-						<ul className="text-white">
+						<ul className="text-white z-40">
 							<li className="mb-4">
 								<a href="#" className="hover:underline hover:text-yellow-500">
 									Privacy Policy
@@ -148,13 +148,13 @@ export default function Example() {
 					</div>
 				</div>
 			</div>
-			<hr className="my-6 border-yellow-700 sm:mx-auto lg:my-8  " />
-			<div className="sm:flex sm:items-center sm:justify-between">
-				<span className="text-sm text-yellow-500 sm:text-center  ">
+			<hr className="my-6 border-yellow-700 sm:mx-auto lg:my-8 z-20" />
+			<div className="sm:flex sm:items-center sm:justify-between z-40">
+				<span className="text-sm text-yellow-500 sm:text-center z-40 ">
 					&copy;{new Date().getFullYear()} | Healing-Hands | All Rights
 					Reserved.
 				</span>
-				<div className="flex mt-4 space-x-6 sm:justify-center sm:mt-0">
+				<div className="flex mt-4 space-x-6 sm:justify-center sm:mt-0 z-40">
 					<a href="#" className="text-white hover:text-yellow-500">
 						<svg
 							className="w-5 h-5"

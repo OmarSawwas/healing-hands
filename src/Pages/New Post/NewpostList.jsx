@@ -9,7 +9,7 @@ function classNames(...classes) {
 const List = () => {
 	const currentURL = window.location.href;
 	return (
-		<Menu as="div" className="relative text-left z-50">
+		<Menu as="div" className="relative text-left z-40">
 			<div>
 				<Menu.Button
 					className={classNames(
