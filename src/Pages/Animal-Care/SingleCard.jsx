@@ -96,18 +96,18 @@ const AnimalCard = (props) => {
 		// Doc Reference
 
 		// Change name submit button
-		const submitPercentage = async () => {
-			if (percentage > 0 && percentage < 100) {
-				const upDate = async () => {
-					if (Id) {
-						await updateDoc(docRef, {percentageCompleted: percentage});
-					}
-				};
+	};
+	const submitPercentage = async () => {
+		if (percentage > 0 && percentage < 100) {
+			const upDate = async () => {
+				if (Id) {
+					await updateDoc(docRef, {percentageCompleted: percentage});
+				}
+			};
 
-				upDate();
-			}
-			setEditMode(false);
-		};
+			upDate();
+		}
+		setEditMode(false);
 	};
 	const deletePost = async () => {
 		setPropOpen(true);
