@@ -3,7 +3,7 @@ import {Dialog, Disclosure, Menu, Transition} from "@headlessui/react";
 import {XIcon} from "@heroicons/react/outline";
 import Navbar from "../../../Components/Navbar";
 import Cards from "./Cards";
-import {doc, getDocs, where, query} from "firebase/firestore";
+import {doc, getDocs, where, query, onSnapshot} from "firebase/firestore";
 import {WorkCases} from "../../../firebase/config";
 import Footer from "../../../Components/Footer";
 import Filter from "../../../Components/Filter";
@@ -90,16 +90,19 @@ const MatcherPage = (props) => {
 	const [workData, setWorkData] = useState([]);
 	const getWorkData = async () => {
 		setLoading(true);
-		const workPendingData = await getDocs(workQuery);
-		setWorkData(
-			workPendingData.docs.map((item) => {
-				const docData = item.data();
-				return {
-					id: item.id,
-					...docData,
-				};
-			})
-		);
+
+		await onSnapshot(workQuery, (documents) => {
+			setWorkData(
+				documents.docs.map((item) => {
+					const docData = item.data();
+					return {
+						id: item.id,
+						...docData,
+					};
+				})
+			);
+		});
+
 		setLoading(false);
 	};
 	const [filter, setFilter] = useState({

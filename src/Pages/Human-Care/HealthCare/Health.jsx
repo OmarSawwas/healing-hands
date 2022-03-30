@@ -2,7 +2,7 @@ import {Fragment, useState, useEffect} from "react";
 import {Dialog, Disclosure, Menu, Transition} from "@headlessui/react";
 import {XIcon} from "@heroicons/react/outline";
 import Navbar from "../../../Components/Navbar";
-import {doc, getDocs, where, query} from "firebase/firestore";
+import {doc, getDocs, where, query, onSnapshot} from "firebase/firestore";
 import {HealthCases} from "../../../firebase/config";
 import Footer from "../../../Components/Footer";
 import Filter from "../../../Components/Filter";
@@ -75,16 +75,18 @@ const MatcherPage = (props) => {
 	const [healthData, setHealthData] = useState([]);
 	const getHealthData = async () => {
 		setLoading(true);
-		const healthPendingData = await getDocs(healthQuery);
-		setHealthData(
-			healthPendingData.docs.map((item) => {
-				const docData = item.data();
-				return {
-					id: item.id,
-					...docData,
-				};
-			})
-		);
+		await onSnapshot(healthQuery, (documents) => {
+			setHealthData(
+				documents.docs.map((item) => {
+					const docData = item.data();
+					return {
+						id: item.id,
+						...docData,
+					};
+				})
+			);
+		});
+
 		setLoading(false);
 	};
 	const [filter, setFilter] = useState({

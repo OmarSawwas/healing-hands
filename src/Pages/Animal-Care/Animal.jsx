@@ -13,7 +13,7 @@ import {
 	ViewGridIcon,
 } from "@heroicons/react/solid";
 import {animalFormData} from "../../firebase/config";
-import {doc, getDocs, where, query} from "firebase/firestore";
+import {doc, getDocs, where, query, onSnapshot} from "firebase/firestore";
 
 const moneyFilters = {
 	id: "money",
@@ -83,23 +83,19 @@ const Animal = (props) => {
 
 	const getData = async () => {
 		setLoading(true);
-		const animalData = await getDocs(animalQuery);
-		const testingFilterQuery = query(
-			animalFormData,
-			where("isAllowed", "==", true),
-			where("country", "==", "Bangladesh")
-		);
-		const testing = await getDocs(testingFilterQuery);
 
-		setData(
-			animalData.docs.map((item) => {
-				const docData = item.data();
-				return {
-					id: item.id,
-					...docData,
-				};
-			})
-		);
+		await onSnapshot(animalQuery, (documents) => {
+			setData(
+				documents.docs.map((item) => {
+					const docData = item.data();
+					return {
+						id: item.id,
+						...docData,
+					};
+				})
+			);
+		});
+
 		setLoading(false);
 	};
 

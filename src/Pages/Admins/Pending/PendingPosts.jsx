@@ -13,7 +13,7 @@ import {
 	WorkCases,
 	HealthCases,
 } from "../../../firebase/config";
-import {doc, getDocs, onSnapshot} from "firebase/firestore";
+import {doc, getDocs, onSnapshot, query, where} from "firebase/firestore";
 import {
 	ChevronDownIcon,
 	FilterIcon,
@@ -86,101 +86,40 @@ const PendingPosts = (props) => {
 	const [tabId, setTabId] = useState("1");
 
 	// Animal Care Posts Start
-	const [animalData, setData] = useState([]);
-	const animalCasesWaiting = animalData.filter((item) => {
-		return !item.isAllowed;
-	});
+	const [animalDataSize, setAnimalDataSize] = useState([]);
+	const [healthDataSize, setHealthDataSize] = useState([]);
+	const [workDataSize, setWorkDataSize] = useState([]);
+	const [educationDataSize, setEducationDataSize] = useState([]);
+
 	const [loading, setLoading] = useState(true);
 	const getData = async () => {
 		setLoading(true);
-		const animalData = await getDocs(animalFormData);
-		setData(
-			animalData.docs.map((item) => {
-				const docData = item.data();
-				return {
-					id: item.id,
-					...docData,
-				};
-			})
+		const healthQuery = query(HealthCases, where("isAllowed", "==", false));
+		const workQuery = query(WorkCases, where("isAllowed", "==", false));
+		const educationQuery = query(
+			EducationCases,
+			where("isAllowed", "==", false)
 		);
+		const animalQuery = query(animalFormData, where("isAllowed", "==", false));
+		await onSnapshot(animalQuery, (documents) => {
+			setAnimalDataSize(documents.size);
+		});
+		await onSnapshot(workQuery, (documents) => {
+			setWorkDataSize(documents.size);
+		});
+		await onSnapshot(healthQuery, (documents) => {
+			setHealthDataSize(documents.size);
+		});
+		await onSnapshot(educationQuery, (documents) => {
+			setEducationDataSize(documents.size);
+		});
 		setLoading(false);
 	};
 	useEffect(() => {
 		getData();
 		return () => getData();
 	}, []);
-	// Animal Care Posts End
-	// Work Posts Start
-	const [workData, setWorkData] = useState([]);
-	const workCasesWaiting = workData.filter((item) => {
-		return !item.isAllowed;
-	});
-	const getWorkData = async () => {
-		setLoading(true);
-		const workPendingData = await getDocs(WorkCases);
-		setWorkData(
-			workPendingData.docs.map((item) => {
-				const docData = item.data();
-				return {
-					id: item.id,
-					...docData,
-				};
-			})
-		);
-		setLoading(false);
-	};
-	useEffect(() => {
-		getWorkData();
-		return () => getWorkData();
-	}, []);
-	// Work Posts Posts End
-	// Health Posts Start
-	const [healthData, setHealthData] = useState([]);
-	const healthCasesWaiting = healthData.filter((item) => {
-		return !item.isAllowed;
-	});
-	const getHealthData = async () => {
-		setLoading(true);
-		const healthPendingData = await getDocs(HealthCases);
-		setHealthData(
-			healthPendingData.docs.map((item) => {
-				const docData = item.data();
-				return {
-					id: item.id,
-					...docData,
-				};
-			})
-		);
-		setLoading(false);
-	};
-	useEffect(() => {
-		getHealthData();
-		return () => getHealthData();
-	}, []);
-	// Health Posts Posts End
-	// Education Posts Start
-	const [educationData, setEducationData] = useState([]);
-	const educationCasesWaiting = educationData.filter((item) => {
-		return !item.isAllowed;
-	});
-	const getEducationData = async () => {
-		setLoading(true);
-		const educationPendingData = await getDocs(EducationCases);
-		setEducationData(
-			educationPendingData.docs.map((item) => {
-				const docData = item.data();
-				return {
-					id: item.id,
-					...docData,
-				};
-			})
-		);
-		setLoading(false);
-	};
-	useEffect(() => {
-		getEducationData();
-		return () => getEducationData();
-	}, []);
+
 	// Education Posts Posts End
 	const navCLick = (event) => {
 		setTabId(event.target.id);
@@ -201,10 +140,10 @@ const PendingPosts = (props) => {
 								</h1>
 
 								<NavSection
-									healthcareposts={healthCasesWaiting.length}
-									animalcareposts={animalCasesWaiting.length}
-									workassistanceposts={workCasesWaiting.length}
-									educationassistanceposts={educationCasesWaiting.length}
+									healthcareposts={healthDataSize}
+									animalcareposts={animalDataSize}
+									workassistanceposts={workDataSize}
+									educationassistanceposts={educationDataSize}
 									handleClick={navCLick}
 									tabId={tabId}
 								/>

@@ -13,7 +13,7 @@ import {
 	PlusSmIcon,
 	ViewGridIcon,
 } from "@heroicons/react/solid";
-import {doc, getDocs, where, query} from "firebase/firestore";
+import {doc, getDocs, where, query, onSnapshot} from "firebase/firestore";
 import {EducationCases} from "../../../firebase/config";
 // Filters Functionality:
 const severityFilters = {
@@ -135,16 +135,18 @@ const MatcherPage = (props) => {
 	const [educationData, setEducationData] = useState([]);
 	const getEducationData = async () => {
 		setLoading(true);
-		const educationPendingData = await getDocs(educationQuery);
-		setEducationData(
-			educationPendingData.docs.map((item) => {
-				const docData = item.data();
-				return {
-					id: item.id,
-					...docData,
-				};
-			})
-		);
+		await onSnapshot(educationQuery, (documents) => {
+			setEducationData(
+				documents.docs.map((item) => {
+					const docData = item.data();
+					return {
+						id: item.id,
+						...docData,
+					};
+				})
+			);
+		});
+
 		setLoading(false);
 	};
 	const [filter, setFilter] = useState({
