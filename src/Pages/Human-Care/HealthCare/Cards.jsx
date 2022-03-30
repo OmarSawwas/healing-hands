@@ -10,7 +10,7 @@ import Wrapper from "../../../Components/Wrapper";
 const Cards = (props) => {
 	const {data, loading, user, userId} = props;
 	return (
-		<Wrapper loading={!user}>
+		<Wrapper loading={loading}>
 			<ul
 				role="list"
 				className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3"

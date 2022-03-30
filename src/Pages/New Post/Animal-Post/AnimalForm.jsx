@@ -9,8 +9,9 @@ import {
 } from "../../../firebase/config";
 import {doc, setDoc, collection} from "firebase/firestore";
 import {ref, uploadBytes, getDownloadURL} from "firebase/storage";
-
+import SuccessfullPop from "../../Pops/SuccesfulSubmit";
 const AnimalForm = () => {
+	const [propOpen, setPropOpen] = useState(false);
 	const [formData, setFormData] = useState({
 		type: "",
 		age: "",
@@ -52,6 +53,7 @@ const AnimalForm = () => {
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 		await setDoc(doc(animalFormData), formData).catch(console.error);
+		setPropOpen(true);
 	};
 
 	const nationalitiesMap = Nationalities.map((item, index) => {
@@ -65,6 +67,7 @@ const AnimalForm = () => {
 	return (
 		<div className="bg-[#3a3534]">
 			<LoadingPop name="Animal Care" />
+			<SuccessfullPop setPropOpen={setPropOpen} propOpen={propOpen} />
 			<div>
 				<div className="flex justify-center">
 					<h2 className="animate-pulse text-2xl font-extrabold tracking-tight  text-[#F2B400] lg:text-2xl ">
@@ -344,7 +347,7 @@ const AnimalForm = () => {
 										id="addressInfo"
 										required
 										rows={3}
-										className="w-48 h-35 box-content resize shadow-lg	box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1) placeholder:italic  block  py-3 px-4 placeholder-gray-400 focus:ring-[#292524] focus:border-[#292524] border border-[#292524] rounded-md"
+										className="w-60 h-35 box-content resize shadow-lg	box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1) placeholder:italic  block  py-3 px-4 placeholder-gray-400 focus:ring-[#292524] focus:border-[#292524] border border-[#292524] rounded-md"
 										placeholder="Please elaborate on how to get to you/the person you are helping."
 									/>
 								</div>
@@ -457,7 +460,7 @@ const AnimalForm = () => {
 											id="extraInfo"
 											required
 											rows={3}
-											className="w-48 h-40 box-content resize shadow-lg	box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1) placeholder:italic  block  py-3 px-4 placeholder-gray-400 focus:ring-[#292524] focus:border-[#292524] border border-[#292524] rounded-md"
+											className="w-60 h-40 box-content resize shadow-lg	box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1) placeholder:italic  block  py-3 px-4 placeholder-gray-400 focus:ring-[#292524] focus:border-[#292524] border border-[#292524] rounded-md"
 											placeholder="Please elaborate on what type of help do you/the person you are helping need to continue your/their education."
 										/>
 									</div>

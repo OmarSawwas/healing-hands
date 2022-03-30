@@ -6,7 +6,9 @@ import {doc, setDoc, collection} from "firebase/firestore";
 import LoadingPop from "../../Pops/LoadingPop";
 import Footer from "../../../Components/Footer";
 import {ref, uploadBytes, getDownloadURL} from "firebase/storage";
+import SuccessfullPop from "../../Pops/SuccesfulSubmit";
 const EducationForm = () => {
+	const [propOpen, setPropOpen] = useState(false);
 	const [formData, setFormData] = useState({
 		name: "",
 		age: "",
@@ -33,6 +35,7 @@ const EducationForm = () => {
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 		await setDoc(doc(EducationCases), formData).catch(console.error);
+		setPropOpen(true);
 	};
 
 	const nationalitiesMap = Nationalities.map((nationality, index) => {
@@ -57,6 +60,7 @@ const EducationForm = () => {
 	return (
 		<div className="bg-[#3a3534]">
 			<LoadingPop name="Education-Assistance" />
+			<SuccessfullPop setPropOpen={setPropOpen} propOpen={propOpen} />
 			<div className="">
 				<div className="flex justify-center">
 					<h2 className="animate-pulse text-2xl font-extrabold tracking-tight  text-[#F2B400] lg:text-2xl ">
@@ -232,7 +236,7 @@ const EducationForm = () => {
 										id="extraAddressInfo"
 										required
 										rows={4}
-										className="w-48 h-35 box-content resize shadow-lg	box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1) placeholder:italic  block  py-3 px-4 placeholder-gray-400 focus:ring-[#292524] focus:border-[#292524] border border-[#292524] rounded-md"
+										className="w-60 h-35 box-content resize shadow-lg	box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1) placeholder:italic  block  py-3 px-4 placeholder-gray-400 focus:ring-[#292524] focus:border-[#292524] border border-[#292524] rounded-md"
 										placeholder="Please elaborate on how to get to you/the person you are helping."
 									/>
 								</div>
@@ -371,7 +375,7 @@ const EducationForm = () => {
 												id="extraInfo"
 												required
 												rows={4}
-												className="w-48 h-40 box-content resize shadow-lg	box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1) placeholder:italic  block  py-3 px-4 placeholder-gray-400 focus:ring-[#292524] focus:border-[#292524] border border-[#292524] rounded-md"
+												className="w-60 h-40 box-content resize shadow-lg	box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1) placeholder:italic  block  py-3 px-4 placeholder-gray-400 focus:ring-[#292524] focus:border-[#292524] border border-[#292524] rounded-md"
 												placeholder="Please elaborate on what type of help do you/the person you are helping need to continue your/their education."
 											/>
 										</div>

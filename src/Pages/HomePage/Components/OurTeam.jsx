@@ -14,7 +14,7 @@ const people = [
 		role: "Front-End Developer & Designer ",
 		imageUrl: Image2,
 		twitterUrl: "#",
-		linkedinUrl: "#",
+		linkedinUrl: "https://www.linkedin.com/in/duaa-kishly-14ab47216",
 	},
 	{
 		name: "Fayez Alloush",

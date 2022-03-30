@@ -32,23 +32,23 @@ const GoalsPage = () => {
 					UN Goals Met
 				</h2>
 
-				<div className="mt-6 grid grid-cols-2 gap-2 md:grid-cols-3 lg:mt-8">
-					<div className="bg-[#292524] col-span-1 flex justify-center py-8 rounded-lg">
+				<div className="mt-2 grid grid-cols-2 gap-2 md:grid-cols-3 lg:mt-8 bg-[#292524] rounded-lg">
+					<div className=" col-span-1 flex justify-center py-8 rounded-lg">
 						<img className="w-64 h-36 rounded-lg" src={Goal1} alt="Goal1" />
 					</div>
-					<div className="bg-[hsl(12,6%,15%)] col-span-1 flex justify-center py-8 rounded-lg">
+					<div className="col-span-1 flex justify-center py-8 rounded-lg">
 						<img className="w-64 h-36 rounded-lg" src={Goal2} alt="Goal2" />
 					</div>
-					<div className="bg-[#292524] col-span-1 flex justify-center py-8 rounded-lg">
+					<div className=" col-span-1 flex justify-center py-8 rounded-lg">
 						<img className="w-64 h-36 rounded-lg" src={Goal3} alt="Goal3" />
 					</div>
-					<div className="bg-[#292524] col-span-1 flex justify-center py-8 rounded-lg">
+					<div className=" col-span-1 flex justify-center py-8 rounded-lg">
 						<img className="w-64 h-36 rounded-lg" src={Goal4} alt="Goal4" />
 					</div>
-					<div className="bg-[#292524] col-span-1 flex justify-center py-8 rounded-lg">
+					<div className=" col-span-1 flex justify-center py-8 rounded-lg">
 						<img className="w-64 h-36 rounded-lg" src={Goal8} alt="Goal8" />
 					</div>
-					<div className="bg-[#292524] col-span-1 flex justify-center py-8 rounded-lg">
+					<div className=" col-span-1 flex justify-center py-8 rounded-lg">
 						<img className="w-64 h-36 rounded-lg" src={Goal17} alt="Goal17" />
 					</div>
 				</div>

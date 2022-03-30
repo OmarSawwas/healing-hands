@@ -56,7 +56,7 @@ const Navbar = (props) => {
 			<Disclosure as="nav" className="bg-stone-800 shadow ">
 				{({open}) => (
 					<>
-						<div className=" max-w-7xl mx-auto px-4 sm:px-6 lg:px-8  ">
+						<div className=" max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 lg:h-24 items-center flex">
 							<div className="flex justify-between h-16 ">
 								<div className="flex">
 									<div className="-ml-2 mr-2 flex items-center md:hidden">
@@ -179,7 +179,7 @@ const Navbar = (props) => {
 														<Menu.Button className="bg-white rounded-full flex text-sm focus:outline-none focus:ring-2 focus:ring-yellow-400">
 															<span className="sr-only">Open user menu</span>
 															<img
-																className="h-8 w-8 rounded-full"
+																className="h-20 w-20 rounded-full"
 																src={user.image}
 																alt=""
 															/>

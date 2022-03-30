@@ -50,26 +50,28 @@ const AnimalCard = (props) => {
 	// Interested Content
 
 	const interestedClick = async () => {
-		const userDocRef = doc(db, "Users", userId);
+		if (user) {
+			const userDocRef = doc(db, "Users", userId);
 
-		if (interested) {
-			const filteredPosts = user.favoritePosts.healthPosts.filter(
-				(item) => item !== Id
-			);
-			await updateDoc(userDocRef, {
-				favoritePosts: {
-					...user.favoritePosts,
-					healthPosts: filteredPosts,
-				},
-			});
-		} else {
-			const newFavoritePosts = [...user.favoritePosts.healthPosts, Id];
-			await updateDoc(userDocRef, {
-				favoritePosts: {
-					...user.favoritePosts,
-					healthPosts: newFavoritePosts,
-				},
-			});
+			if (interested) {
+				const filteredPosts = user.favoritePosts.healthPosts.filter(
+					(item) => item !== Id
+				);
+				await updateDoc(userDocRef, {
+					favoritePosts: {
+						...user.favoritePosts,
+						healthPosts: filteredPosts,
+					},
+				});
+			} else {
+				const newFavoritePosts = [...user.favoritePosts.healthPosts, Id];
+				await updateDoc(userDocRef, {
+					favoritePosts: {
+						...user.favoritePosts,
+						healthPosts: newFavoritePosts,
+					},
+				});
+			}
 		}
 	};
 	//
