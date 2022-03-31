@@ -4,24 +4,24 @@ const data = [
 		Title: "Health-Care",
 		description:
 			"Help others find their suitable health-care sharing their story",
-		href: "/Human-Care/Health-Form",
+		href: "/Health-Form",
 	},
 	{
 		Title: "Work-Assistant",
 		description:
 			"Help others find their suitable work based on their skills and/or their certificates sharing their story",
-		href: "/Human-Care/Work-Form",
+		href: "/Work-Form",
 	},
 	{
 		Title: "Education Assistant",
 		description:
 			"Help others continue their journy of education sharing their story",
-		href: "/Human-Care/Education-Form",
+		href: "/Education-Form",
 	},
 	{
 		Title: "Animal-Care",
 		description: "Help animals find a loving family and a safe shelter",
-		href: "/Animal-Care-Form",
+		href: "/Animal-Form",
 	},
 ];
 
