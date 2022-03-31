@@ -9,9 +9,11 @@ import {
 } from "../../../firebase/config";
 import {doc, setDoc, collection} from "firebase/firestore";
 import {ref, uploadBytes, getDownloadURL} from "firebase/storage";
+
 import SuccessfullPop from "../../Pops/SuccesfulSubmit";
 const AnimalForm = () => {
 	const [propOpen, setPropOpen] = useState(false);
+	const [imageUpload, setImageUpload] = useState(true);
 	const [formData, setFormData] = useState({
 		type: "",
 		age: "",
@@ -57,12 +59,13 @@ const AnimalForm = () => {
 			contentType: file.type,
 		};
 		await uploadBytes(storageRef, file, metadata);
-		getDownloadURL(storageRef).then((res) => {
+		await getDownloadURL(storageRef).then((res) => {
 			setFormData((prevState) => ({
 				...prevState,
 				files: res,
 			}));
 		});
+		setImageUpload(false);
 	};
 	return (
 		<div className="bg-[#3a3534]">
@@ -516,15 +519,26 @@ const AnimalForm = () => {
 									</div>
 								</div>
 								{/* Element 4 */}
-								<div className="mt-8 flex justify-center">
-									<button
-										type="submit"
-										className="text-[#F2B400] ml-3 inline-flex justify-center py-2 px-10 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-[#292524] hover:bg-[#3a3534] focus:outline-none focus:ring-2  focus:ring-[#292524]"
-										onSubmit={handleSubmit}
-									>
-										Submit
-									</button>
-								</div>
+								{!imageUpload && (
+									<div className="mt-8 flex justify-center">
+										<button
+											type="submit"
+											className="text-[#F2B400] ml-3 inline-flex justify-center py-2 px-10 border border-transparent shadow-sm text-sm font-medium rounded-md  bg-[#292524] hover:bg-[#3a3534] focus:outline-none focus:ring-2  focus:ring-[#292524]"
+										>
+											Submit
+										</button>
+									</div>
+								)}
+								{imageUpload && (
+									<div className="mt-8 flex justify-center">
+										<button
+											type="button"
+											className="disabled text-[#F2B400] ml-3 inline-flex justify-center py-2 px-10 border border-transparent shadow-sm text-sm font-medium rounded-md  bg-[#807b7a] "
+										>
+											Submit
+										</button>
+									</div>
+								)}
 							</div>
 						</div>
 					</div>
