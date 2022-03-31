@@ -157,16 +157,16 @@ const Manager = () => {
 						</button>
 					</div>
 
-					<div className="mt-10 mb-6 ">
+					<div className="mt-6 mb-6">
 						<div className=" flex-grow lg:mt-0 lg:ml-6 lg:flex-grow-0 lg:flex-shrink-0">
 							<div className="mt-1 lg:hidden">
-								<div className="flex items-center">
+								<div>
 									<div
-										className="flex-shrink-0 inline-block rounded-full overflow-hidden h-12 w-12"
+										className="rounded-full overflow-hidden h-36 w-36 mt-10"
 										aria-hidden="true"
 									>
 										<img
-											className="rounded-full w-48 h-48 border-2 z-10"
+											className="rounded-full w-36 h-36 border-2"
 											src={data.image}
 											alt=""
 										/>
@@ -194,7 +194,7 @@ const Manager = () => {
 
 							<div className="hidden relative rounded-full overflow-hidden lg:block">
 								<img
-									className="relative rounded-full w-48 h-48 border-2 z-10"
+									className="relative rounded-full w-40 h-40 border-2"
 									src={data.image}
 									alt=""
 								/>
@@ -220,7 +220,7 @@ const Manager = () => {
 					<div className="mt-10">
 						{!editMode ? (
 							<div className="flex ">
-								<h1 className="ml-5 text-2xl font-bold leading-7 text-[#1B1A17] sm:leading-9 sm:truncate justify-center">
+								<h1 className="ml-1 text-2xl font-bold leading-7 text-[#1B1A17] sm:leading-9 sm:truncate justify-center">
 									{data.fName}
 								</h1>
 								<h1 className="ml-2 text-2xl font-bold leading-7 text-[#1B1A17] sm:leading-9 sm:truncate justify-center">
@@ -253,8 +253,8 @@ const Manager = () => {
 						)}
 						{data.isAdmin && (
 							<div className="flex items-center ml-4 mt-2">
-								<CheckCircleIcon className="h-6 w-6 text-blue-800" />
-								<p className="text-md p-0 ml-2 mb-0 text-1B1A17">
+								<CheckCircleIcon className="h-6 w-6 text-black " />
+								<p className="text-md p-0 ml-2 mb-0 text-1B1A17 font-bold">
 									Administrator
 								</p>
 							</div>
