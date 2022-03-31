@@ -97,12 +97,12 @@ const UserInfo = (props) => {
 								<div className="mt-1">
 									<input
 										required
-										placeholder="Omar"
+										placeholder="First Name"
 										type="text"
 										id="fName"
+										autoComplete="off"
 										value={userData.fName}
 										onChange={handleChange}
-										autoComplete="First Name"
 										className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-[#f2b400] focus:border-[#f2b400] sm:text-sm"
 									/>
 								</div>
@@ -118,9 +118,9 @@ const UserInfo = (props) => {
 								<div className="mt-1">
 									<input
 										required
-										placeholder="Sawwas"
+										placeholder="Last Name"
 										type="text"
-										autoComplete="password"
+										autoComplete="off"
 										className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-[#f2b400] focus:border-[#f2b400] sm:text-sm"
 										id="lName"
 										value={userData.lName}
@@ -139,8 +139,8 @@ const UserInfo = (props) => {
 									<input
 										required
 										type="text"
-										placeholder="22"
-										autoComplete="Age"
+										placeholder="age"
+										autoComplete="off"
 										className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-[#f2b400] focus:border-[#f2b400] sm:text-sm"
 										id="age"
 										value={userData.age}
@@ -162,10 +162,11 @@ const UserInfo = (props) => {
 										onChange={handleChange}
 										name="phoneCode"
 										required
+										autoComplete="nope"
 										className="box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), max-w-lg block focus:ring-[#f2b400] focus:border-[#f2b400] w-full shadow-sm sm:max-w-xs sm:text-sm border-gray-300 rounded-md  col-span-1"
 									>
-										<option hidden disabled>
-											•Specify country•
+										<option defaultChecked hidden className="text-gray-400">
+											••Specify a Country••
 										</option>
 										{nationalitiesMap}
 									</select>
@@ -177,7 +178,7 @@ const UserInfo = (props) => {
 										type="text"
 										onChange={handleChange}
 										value={userData.phone}
-										autoComplete="phone"
+										autoComplete="off"
 										className=" appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-[#f2b400] focus:border-[#f2b400] sm:text-sm col-span-3"
 									/>
 								</div>
@@ -198,8 +199,8 @@ const UserInfo = (props) => {
 										required
 										className="box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), max-w-lg  focus:ring-[#f2b400]  focus:border-[#f2b400]  w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
 									>
-										<option hidden disabled>
-											•Specify country•
+										<option defaultChecked hidden className="text-gray-400">
+											••Specify a Country••
 										</option>
 										{countries}
 									</select>
@@ -216,7 +217,7 @@ const UserInfo = (props) => {
 									<input
 										required
 										type="text"
-										autoComplete="address"
+										autoComplete="off"
 										value={userData.address}
 										onChange={handleChange}
 										id="address"
@@ -235,7 +236,7 @@ const UserInfo = (props) => {
 									<input
 										required
 										type="text"
-										autoComplete="work"
+										autoComplete="off"
 										id="work"
 										className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-[#f2b400] focus:border-[#f2b400] sm:text-sm"
 										onChange={handleChange}
@@ -277,6 +278,7 @@ const UserInfo = (props) => {
 														id="file-upload"
 														name="file-upload"
 														type="file"
+														autoComplete="off"
 														onChange={uploadFile}
 														className="sr-only"
 														required

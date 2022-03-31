@@ -36,7 +36,7 @@ export default function Example() {
 									<input
 										required
 										type="email"
-										autoComplete="email"
+										autoComplete="off"
 										className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-[#f2b400] focus:border-[#f2b400] sm:text-sm"
 										onChange={(e) => setEmail(e.target.value)}
 										value={email}
@@ -55,7 +55,7 @@ export default function Example() {
 									<input
 										required
 										type="password"
-										autoComplete="password"
+										autoComplete="off"
 										className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-[#f2b400] focus:border-[#f2b400] sm:text-sm"
 										onChange={(e) => setPassword(e.target.value)}
 										value={password}

@@ -114,6 +114,7 @@ const ContactUsPage = () => {
 											value={data.name}
 											placeholder="Full Name"
 											required
+											autoComplete="off"
 											className="shadow-lg	box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1)  block w-full py-3 px-4 placeholder:italic  placeholder-gray-400 focus:ring-black focus:border-black  rounded-md"
 										/>
 									</div>
@@ -134,6 +135,7 @@ const ContactUsPage = () => {
 											value={data.email}
 											placeholder="Email"
 											required
+											autoComplete="off"
 											className="shadow-lg	box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1)  block w-full py-3 px-4 placeholder:italic  placeholder-gray-400 focus:ring-black focus:border-black  rounded-md"
 										/>
 									</div>
@@ -154,6 +156,7 @@ const ContactUsPage = () => {
 											value={data.phone}
 											placeholder="+XXX XXXXXXXX"
 											required
+											autoComplete="off"
 											className="shadow-lg	box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1)  block w-full py-3 px-4 placeholder:italic  placeholder-gray-400 focus:ring-black focus:border-black  rounded-md"
 										/>
 									</div>

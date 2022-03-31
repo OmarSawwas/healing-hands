@@ -108,8 +108,8 @@ const Filter = (props) => {
 											required
 											className="shadow-lg box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), max-w-lg block focus:ring-[#292524] focus:border-[#292524] w-full sm:max-w-xs sm:text-sm border-[#292524] rounded-md"
 										>
-											<option hidden disabled>
-												•Specify country•
+											<option defaultChecked hidden className="text-gray-400">
+												••Specify a Country••
 											</option>
 											{nationalitiesMap}
 										</select>

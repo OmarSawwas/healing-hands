@@ -184,6 +184,7 @@ const Manager = () => {
 												id="mobile-user-photo"
 												name="user-photo"
 												type="file"
+												autoComplete="off"
 												onChange={changeImage}
 												className="absolute w-full h-full opacity-0 cursor-pointer border-gray-300 rounded-md"
 											/>
@@ -209,6 +210,7 @@ const Manager = () => {
 										htmlFor="desktop-user-photo"
 										name="user-photo"
 										type="file"
+										autoComplete="off"
 										onChange={changeImage}
 										className="absolute w-full h-full opacity-0 cursor-pointer border-gray-300 rounded-md"
 									/>
@@ -236,6 +238,7 @@ const Manager = () => {
 									name="fName"
 									id="fName"
 									required
+									autoComplete="off"
 									placeholder="FirstName here... "
 									className=" ml-2 box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), max-w-lg block w-full shadow-sm  focus:border-indigo-500 sm:max-w-xs sm:text-sm border-[#1B1A17] rounded-md"
 								/>
@@ -245,6 +248,7 @@ const Manager = () => {
 									value={data.lName}
 									name="lName"
 									id="lName"
+									autoComplete="off"
 									required
 									placeholder="LastName here... "
 									className="ml-2 box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), max-w-lg block w-full shadow-sm  focus:border-indigo-500 sm:max-w-xs sm:text-sm border-[#1B1A17] rounded-md"
@@ -302,6 +306,7 @@ const Manager = () => {
 												value={data.age}
 												name="age"
 												id="age"
+												autoComplete="off"
 												required
 												placeholder={data.age}
 												className=" ml-2 box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), max-w-lg block w-full shadow-sm  focus:border-indigo-500 sm:max-w-xs sm:text-sm border-[#1B1A17] rounded-md"
@@ -353,6 +358,7 @@ const Manager = () => {
 												value={data.email}
 												name="email"
 												id="email"
+												autoComplete="off"
 												required
 												placeholder="Someone@somthing.com... "
 												className=" box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), max-w-lg block w-full shadow-sm  focus:border-[#f2d17c sm:max-w-xs sm:text-sm border-[#1B1A17] rounded-md"
@@ -414,8 +420,12 @@ const Manager = () => {
 														required
 														className="col-span-2 box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), max-w-lg block  focus:border-indigo-500 w-full shadow-sm sm:max-w-xs sm:text-sm border-[#1B1A17] rounded-md "
 													>
-														<option hidden disabled>
-															•Specify country•
+														<option
+															defaultChecked
+															hidden
+															className="text-gray-400"
+														>
+															••Specify a Country••
 														</option>
 														{nationalitiesCountryMap}
 													</select>
@@ -472,6 +482,7 @@ const Manager = () => {
 												value={data.work}
 												name="work"
 												id="work"
+												autoComplete="off"
 												required
 												placeholder={"Beverely hills 29, 13B"}
 												className=" ml-2 box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), max-w-lg block w-full shadow-sm  focus:border-indigo-500 sm:max-w-xs sm:text-sm border-[#1B1A17] rounded-md"
@@ -527,8 +538,12 @@ const Manager = () => {
 													required
 													className="col-span-2 box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), max-w-lg block  focus:border-indigo-500 w-full shadow-sm sm:max-w-xs sm:text-sm border-[#1B1A17] rounded-md "
 												>
-													<option hidden disabled>
-														•Specify country•
+													<option
+														defaultChecked
+														hidden
+														className="text-gray-400"
+													>
+														••Specify a Country••
 													</option>
 													{nationalitiesMap}
 												</select>
@@ -537,6 +552,7 @@ const Manager = () => {
 													type="text"
 													onChange={handleChange}
 													value={data.phone}
+													autoComplete="off"
 													name="phone"
 													id="phone"
 													required
@@ -588,6 +604,7 @@ const Manager = () => {
 												type="text"
 												onChange={handleChange}
 												value={data.address}
+												autoComplete="off"
 												name="address"
 												id="address"
 												required

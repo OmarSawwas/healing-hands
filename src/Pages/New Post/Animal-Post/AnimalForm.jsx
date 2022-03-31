@@ -103,6 +103,7 @@ const AnimalForm = () => {
 											value={formData.type}
 											name="type"
 											id="type"
+											autoComplete="off"
 											required
 											placeholder="example: Cat,Dog,Turtle,etc..."
 											className="box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), max-w-lg block w-full shadow-sm focus:ring-[#292524] focus:border-[#292524] sm:max-w-xs sm:text-sm border-[#292524] rounded-md"
@@ -122,6 +123,7 @@ const AnimalForm = () => {
 										<div className="mt-1 sm:mt-0 sm:col-span-2">
 											<input
 												type="radio"
+												autoComplete="off"
 												id="1-2 years"
 												name="age"
 												onChange={handleChange}
@@ -136,6 +138,7 @@ const AnimalForm = () => {
 										<div className="mt-1 sm:mt-0 sm:col-span-2">
 											<input
 												type="radio"
+												autoComplete="off"
 												id="2-5 years"
 												name="age"
 												onChange={handleChange}
@@ -151,6 +154,7 @@ const AnimalForm = () => {
 											<input
 												type="radio"
 												id="5-10 years"
+												autoComplete="off"
 												name="age"
 												onChange={handleChange}
 												value="5-10 years"
@@ -164,6 +168,7 @@ const AnimalForm = () => {
 										<div className="mt-1 sm:mt-0 sm:col-span-2">
 											<input
 												type="radio"
+												autoComplete="off"
 												id="10+ years"
 												name="age"
 												onChange={handleChange}
@@ -191,6 +196,7 @@ const AnimalForm = () => {
 										<input
 											type="radio"
 											id="Home animal"
+											autoComplete="off"
 											name="raisedEnvironment"
 											onChange={handleChange}
 											value="Home animal"
@@ -205,6 +211,7 @@ const AnimalForm = () => {
 										<input
 											type="radio"
 											id="Street animal"
+											autoComplete="off"
 											name="raisedEnvironment"
 											onChange={handleChange}
 											value="Street animal"
@@ -228,6 +235,7 @@ const AnimalForm = () => {
 									<div className="mt-1 sm:mt-0 sm:col-span-2">
 										<input
 											type="radio"
+											autoComplete="off"
 											id="Yes"
 											name="isVaccinated"
 											onChange={handleChange}
@@ -242,6 +250,7 @@ const AnimalForm = () => {
 									<div className="mt-1 sm:mt-0 sm:col-span-2">
 										<input
 											type="radio"
+											autoComplete="off"
 											id="No"
 											name="isVaccinated"
 											onChange={handleChange}
@@ -256,6 +265,7 @@ const AnimalForm = () => {
 									<div className="mt-1 sm:mt-0 sm:col-span-2">
 										<input
 											type="radio"
+											autoComplete="off"
 											id="Don't know"
 											name="isVaccinated"
 											onChange={handleChange}
@@ -279,6 +289,7 @@ const AnimalForm = () => {
 									<div className="mt-1 sm:mt-0 sm:col-span-2">
 										<input
 											type="text"
+											autoComplete="off"
 											onChange={handleChange}
 											value={formData.permenantNumber}
 											name="permenantNumber"
@@ -323,6 +334,7 @@ const AnimalForm = () => {
 									<div className="mt-1 sm:mt-0 sm:col-span-2">
 										<input
 											type="text"
+											autoComplete="off"
 											onChange={handleChange}
 											value={formData.Location}
 											name="Location"
@@ -372,6 +384,7 @@ const AnimalForm = () => {
 									<div className="mt-1 sm:mt-0 sm:col-span-2">
 										<input
 											type="radio"
+											autoComplete="off"
 											id="high"
 											name="severity"
 											onChange={handleChange}
@@ -390,6 +403,7 @@ const AnimalForm = () => {
 									<div className="mt-1 sm:mt-0 sm:col-span-2">
 										<input
 											type="radio"
+											autoComplete="off"
 											id="moderate"
 											name="severity"
 											onChange={handleChange}
@@ -408,6 +422,7 @@ const AnimalForm = () => {
 									<div>
 										<input
 											type="radio"
+											autoComplete="off"
 											id="low"
 											name="severity"
 											onChange={handleChange}
@@ -435,6 +450,7 @@ const AnimalForm = () => {
 									<div className="mt-1 sm:mt-0 sm:col-span-2">
 										<input
 											type="text"
+											autoComplete="off"
 											onChange={handleChange}
 											value={formData.money}
 											name="money"
@@ -501,6 +517,7 @@ const AnimalForm = () => {
 														<span>Upload a file</span>
 														<input
 															id="file-upload"
+															autoComplete="off"
 															name="file-upload"
 															type="file"
 															onChange={uploadFile}

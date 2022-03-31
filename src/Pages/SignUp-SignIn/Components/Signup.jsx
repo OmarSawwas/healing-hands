@@ -18,7 +18,7 @@ const SignUpPage = (props) => {
 		}
 		setUserData((prevState) => ({...prevState, [e.target.id]: e.target.value}));
 	};
-	
+
 	return (
 		<div className="bg-[#3a3534]">
 			<div className="min-h-full flex flex-col justify-center py-12 sm:px-6 lg:px-8">
@@ -42,7 +42,7 @@ const SignUpPage = (props) => {
 									<input
 										required
 										type="email"
-										autoComplete="email"
+										autoComplete="off"
 										id="email"
 										className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-[#f2b400] focus:border-[#f2b400] sm:text-sm"
 										onChange={handleChange}
@@ -62,7 +62,7 @@ const SignUpPage = (props) => {
 									<input
 										required
 										type="password"
-										autoComplete="password"
+										autoComplete="off"
 										id="password"
 										className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-[#f2b400] focus:border-[#f2b400] sm:text-sm"
 										onChange={handleChange}

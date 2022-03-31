@@ -103,7 +103,7 @@ const HealthForm = () => {
 											id="name"
 											required
 											placeholder="Case's Name"
-											autoComplete="nope"
+											autoComplete="off"
 											className="box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), max-w-lg block w-full shadow-sm focus:ring-[#292524] focus:border-[#292524] sm:max-w-xs sm:text-sm border-[#292524] rounded-md"
 										/>
 									</div>
@@ -120,7 +120,7 @@ const HealthForm = () => {
 									<div className="sm:mt-0 sm:col-span-2">
 										<input
 											type="text"
-											autoComplete="nope"
+											autoComplete="off"
 											onChange={handleChange}
 											value={formData.age}
 											name="age"
@@ -144,7 +144,7 @@ const HealthForm = () => {
 									<div className="mt-1 sm:mt-0 sm:col-span-2">
 										<input
 											type="email"
-											autoComplete="nope"
+											autoComplete="off"
 											onChange={handleChange}
 											value={formData.email}
 											name="email"
@@ -166,7 +166,7 @@ const HealthForm = () => {
 									<div className="sm:mt-0 sm:col-span-2">
 										<input
 											type="text"
-											autoComplete="nope"
+											autoComplete="off"
 											onChange={handleChange}
 											value={formData.permenantNumber}
 											name="permenantNumber"
@@ -211,7 +211,7 @@ const HealthForm = () => {
 									<div className=" sm:mt-0 sm:col-span-2">
 										<input
 											type="text"
-											autoComplete="nope"
+											autoComplete="off"
 											onChange={handleChange}
 											value={formData.permenantAddress}
 											name="permenantAddress"
@@ -266,6 +266,7 @@ const HealthForm = () => {
 											name="severity"
 											onChange={handleChange}
 											value="high"
+											autoComplete="off"
 											checked={formData.severity === "high"}
 											required
 											className="cursor-pointer"
@@ -281,6 +282,7 @@ const HealthForm = () => {
 										<input
 											type="radio"
 											id="moderate"
+											autoComplete="off"
 											name="severity"
 											onChange={handleChange}
 											value="moderate"
@@ -299,6 +301,7 @@ const HealthForm = () => {
 										<input
 											type="radio"
 											id="low"
+											autoComplete="off"
 											name="severity"
 											onChange={handleChange}
 											value="low"
@@ -327,6 +330,7 @@ const HealthForm = () => {
 											onChange={handleChange}
 											value={formData.money}
 											name="money"
+											autoComplete="off"
 											id="money"
 											required
 											placeholder="Amount - /Period(/month)"
@@ -391,6 +395,7 @@ const HealthForm = () => {
 														<span>Upload a file</span>
 														<input
 															id="file-upload"
+															autoComplete="off"
 															name="file-upload"
 															type="file"
 															onChange={uploadFile}

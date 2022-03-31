@@ -99,11 +99,11 @@ const EducationForm = () => {
 											type="text"
 											onChange={handleChange}
 											value={formData.name}
+											autoComplete="off"
 											name="name"
 											id="name"
 											required
 											placeholder="Case's Name"
-											autoComplete="nope"
 											className="box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), max-w-lg block w-full shadow-sm focus:ring-[#292524] focus:border-[#292524] sm:max-w-xs sm:text-sm border-[#292524] rounded-md"
 										/>
 									</div>
@@ -120,7 +120,7 @@ const EducationForm = () => {
 									<div className="sm:mt-0 sm:col-span-2">
 										<input
 											type="text"
-											autoComplete="nope"
+											autoComplete="off"
 											onChange={handleChange}
 											value={formData.age}
 											name="age"
@@ -144,7 +144,7 @@ const EducationForm = () => {
 									<div className="mt-1 sm:mt-0 sm:col-span-2">
 										<input
 											type="email"
-											autoComplete="nope"
+											autoComplete="off"
 											onChange={handleChange}
 											value={formData.email}
 											name="email"
@@ -166,7 +166,7 @@ const EducationForm = () => {
 									<div className="sm:mt-0 sm:col-span-2">
 										<input
 											type="text"
-											autoComplete="nope"
+											autoComplete="off"
 											onChange={handleChange}
 											value={formData.permenantNumber}
 											name="permenantNumber"
@@ -211,7 +211,7 @@ const EducationForm = () => {
 									<div className=" sm:mt-0 sm:col-span-2">
 										<input
 											type="text"
-											autoComplete="nope"
+											autoComplete="off"
 											onChange={handleChange}
 											value={formData.permenantAddress}
 											name="permenantAddress"
@@ -268,6 +268,7 @@ const EducationForm = () => {
 											value="high"
 											checked={formData.severity === "high"}
 											required
+											autoComplete="off"
 											className="cursor-pointer"
 										/>
 										<label
@@ -286,6 +287,7 @@ const EducationForm = () => {
 											value="moderate"
 											checked={formData.severity === "moderate"}
 											required
+											autoComplete="off"
 											className="cursor-pointer"
 										/>
 										<label
@@ -304,6 +306,7 @@ const EducationForm = () => {
 											value="low"
 											checked={formData.severity === "low"}
 											required
+											autoComplete="off"
 											className="cursor-pointer"
 										/>
 										<label
@@ -329,6 +332,7 @@ const EducationForm = () => {
 											name="money"
 											id="money"
 											required
+											autoComplete="off"
 											placeholder="Amount - /Period(/month)"
 											className="box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), max-w-lg block w-full shadow-sm focus:ring-[#292524] focus:border-[#292524] sm:max-w-xs sm:text-sm border-[#292524] rounded-md"
 										/>
@@ -422,6 +426,7 @@ const EducationForm = () => {
 															onChange={uploadFile}
 															className="sr-only"
 															required
+															autoComplete="off"
 															accept="image/png,image/jpeg,image/webp"
 														/>
 													</label>

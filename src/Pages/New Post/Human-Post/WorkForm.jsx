@@ -105,7 +105,7 @@ const HealthForm = () => {
 											id="name"
 											required
 											placeholder="Case's Name"
-											autoComplete="nope"
+											autoComplete="off"
 											className="box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), max-w-lg block w-full shadow-sm focus:ring-[#292524] focus:border-[#292524] sm:max-w-xs sm:text-sm border-[#292524] rounded-md"
 										/>
 									</div>
@@ -122,7 +122,7 @@ const HealthForm = () => {
 									<div className="sm:mt-0 sm:col-span-2">
 										<input
 											type="text"
-											autoComplete="nope"
+											autoComplete="off"
 											onChange={handleChange}
 											value={formData.age}
 											name="age"
@@ -146,7 +146,7 @@ const HealthForm = () => {
 									<div className="mt-1 sm:mt-0 sm:col-span-2">
 										<input
 											type="email"
-											autoComplete="nope"
+											autoComplete="off"
 											onChange={handleChange}
 											value={formData.email}
 											name="email"
@@ -168,7 +168,7 @@ const HealthForm = () => {
 									<div className="sm:mt-0 sm:col-span-2">
 										<input
 											type="text"
-											autoComplete="nope"
+											autoComplete="off"
 											onChange={handleChange}
 											value={formData.permenantNumber}
 											name="permenantNumber"
@@ -213,7 +213,7 @@ const HealthForm = () => {
 									<div className=" sm:mt-0 sm:col-span-2">
 										<input
 											type="text"
-											autoComplete="nope"
+											autoComplete="off"
 											onChange={handleChange}
 											value={formData.permenantAddress}
 											name="permenantAddress"
@@ -270,6 +270,7 @@ const HealthForm = () => {
 											value="high"
 											checked={formData.severity === "high"}
 											required
+											autoComplete="off"
 											className="cursor-pointer"
 										/>
 										<label
@@ -288,6 +289,7 @@ const HealthForm = () => {
 											value="moderate"
 											checked={formData.severity === "moderate"}
 											required
+											autoComplete="off"
 											className="cursor-pointer"
 										/>
 										<label
@@ -306,6 +308,7 @@ const HealthForm = () => {
 											value="low"
 											checked={formData.severity === "low"}
 											required
+											autoComplete="off"
 											className="cursor-pointer"
 										/>
 										<label
@@ -329,6 +332,7 @@ const HealthForm = () => {
 											onChange={handleChange}
 											value={formData.money}
 											name="money"
+											autoComplete="off"
 											id="money"
 											required
 											placeholder="Amount - /Period(/month)"
@@ -350,6 +354,7 @@ const HealthForm = () => {
 											onChange={handleChange}
 											value={formData.skills}
 											name="skills"
+											autoComplete="off"
 											id="skills"
 											required
 											placeholder="Blacksmithing,tailoring ... "
@@ -440,6 +445,7 @@ const HealthForm = () => {
 														<input
 															id="file-upload"
 															name="file-upload"
+															autoComplete="off"
 															type="file"
 															onChange={uploadFile}
 															className="sr-only"
