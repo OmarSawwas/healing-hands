@@ -43,7 +43,6 @@ const AnimalCard = (props) => {
 	const [percentage, setPercentage] = useState();
 	const docRef = doc(db, "AnimalCases", Id);
 	// Interested Content
-	const userDocRef = doc(db, "Users", userId);
 
 	// const interestedClick = async () => {
 	// 	if (interested) {
