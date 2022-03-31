@@ -27,18 +27,21 @@ import Profile from "./Pages/Profile/ProfileManager";
 import StarredCases from "./Pages/Profile/Pages/StarredCases";
 import ContactUsMessages from "./Pages/Profile/Pages/ContactUs";
 import {useState, useEffect} from "react";
-import {db} from "./firebase/config";
+import {auth, db} from "./firebase/config";
 import {getDoc, doc, onSnapshot} from "firebase/firestore";
 import OnAuthState from "./firebase/User-log-Manager/OnAuthState";
 import Navbar from "./Components/Navbar";
 import Footer from "./Components/Footer";
+import {onAuthStateChanged} from "firebase/auth";
 function App() {
 	// User Configuration
-	const user = OnAuthState();
 	const [myUser, setUser] = useState();
 	const [id, setId] = useState();
-	const getUser = async () => {
-		if (user) {
+	const getUser = async (user) => {
+		if (!user) {
+			setUser(undefined);
+			setId(undefined);
+		} else {
 			const id = user.uid;
 			setId(id);
 			const docRef = doc(db, "Users", id);
@@ -48,13 +51,13 @@ function App() {
 		}
 	};
 	useEffect(() => {
-		getUser();
+		onAuthStateChanged(auth, (user) => {
+			getUser(user);
+		});
+
 		return () => getUser();
-	}, [user]);
+	}, []);
 
-	//
-
-	//
 	return (
 		<BrowserRouter>
 			<Navbar user={myUser} userId={id} />

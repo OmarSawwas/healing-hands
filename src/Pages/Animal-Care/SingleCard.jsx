@@ -235,7 +235,7 @@ const AnimalCard = (props) => {
 				</div>
 			)}
 			{editMode && (
-				<div className="flex  mt-2">
+				<div className="flex  mt-4">
 					<input
 						type="text"
 						onChange={handleChange}
