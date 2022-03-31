@@ -53,6 +53,7 @@ const UserInfo = (props) => {
 				console.log(err.message);
 			});
 	};
+	const [imageUpload, setImageUpload] = useState(false);
 	const uploadFile = async (event) => {
 		if (!event.target.files) return;
 		const file = event.target.files[0];
@@ -61,12 +62,13 @@ const UserInfo = (props) => {
 			contentType: file.type,
 		};
 		await uploadBytes(storageRef, file, metadata);
-		getDownloadURL(storageRef).then((res) => {
+		await getDownloadURL(storageRef).then((res) => {
 			setUserData((prevState) => ({
 				...prevState,
 				image: res,
 			}));
 		});
+		setImageUpload(true);
 	};
 
 	return (
@@ -299,14 +301,26 @@ const UserInfo = (props) => {
 									Previous
 								</button>
 							</div>
-							<div>
-								<button
-									type="submit"
-									className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-[#292524] font-bold bg-[#f2b400] hover:bg-[#d8a823] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#f2b400]"
-								>
-									Sign Up
-								</button>
-							</div>
+							{imageUpload && (
+								<div>
+									<button
+										type="submit"
+										className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-[#292524] font-bold bg-[#f2b400] hover:bg-[#d8a823] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#f2b400]"
+									>
+										Sign Up
+									</button>
+								</div>
+							)}
+							{!imageUpload && (
+								<div>
+									<button
+										type="button"
+										className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm text-[#292524] font-bold bg-[#8f8b7e]"
+									>
+										Sign Up
+									</button>
+								</div>
+							)}
 						</form>
 
 						<div className="mt-6">

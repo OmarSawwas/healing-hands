@@ -18,7 +18,7 @@ const SignUpPage = (props) => {
 		}
 		setUserData((prevState) => ({...prevState, [e.target.id]: e.target.value}));
 	};
-
+	
 	return (
 		<div className="bg-[#3a3534]">
 			<div className="min-h-full flex flex-col justify-center py-12 sm:px-6 lg:px-8">
